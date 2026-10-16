@@ -12,6 +12,7 @@ import Contact from "./components/Contact.jsx";
 import Footer from "./components/Footer.jsx";
 import ChatWidget from "./components/ChatWidget.jsx";
 import Admin from "./components/Admin.jsx";
+import { isServerMode } from "./api.js";
 
 export default function App() {
   const [hash, setHash] = useState(location.hash);
@@ -23,7 +24,7 @@ export default function App() {
     return () => window.removeEventListener("hashchange", onHash);
   }, []);
 
-  if (hash === "#admin") return <Admin />;
+  if (hash === "#admin" && isServerMode) return <Admin />;
 
   return (
     <>

@@ -1,5 +1,5 @@
 // Rule-based answers used when there is no API key, the daily cap is hit, or the AI call fails.
-import { PRICING, BOOKING, CONTACT } from "../shared/siteData.js";
+import { PRICING, BOOKING, CONTACT } from "./siteData.js";
 
 const wf = PRICING.find((c) => c.id === "wedding-films");
 const addons = PRICING.find((c) => c.id === "addons");

@@ -9,7 +9,7 @@ import { rateLimit } from "./limits.js";
 import { addEnquiry, updateEnquiry, listEnquiries } from "./store.js";
 import { emailOwner, mailEnabled } from "./mailer.js";
 import { aiEnabled, canUseAi, chatReply, packageNote, dayPlan, vibeMatch, analyseEnquiry } from "./ai.js";
-import { demoChat, demoNote, demoPlan, demoVibe, demoAnalysis } from "./fallbacks.js";
+import { demoChat, demoNote, demoPlan, demoVibe, demoAnalysis } from "../shared/offline.js";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const dist = path.join(here, "..", "dist");
