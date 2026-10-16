@@ -40,8 +40,10 @@ export default function Contact({ prefill }) {
           <p className="lead">Tell us your date and a little about your wedding. We'll reply personally and let you know if we're available.</p>
           <div className="contact-list">
             <div><span>EMAIL</span><a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a></div>
-            <div><span>PHONE</span><a href={`tel:${CONTACT.phone.replace(/\s/g, "")}`}>{CONTACT.phone}</a></div>
-            <div><span>INSTAGRAM</span><a href="#contact">{CONTACT.instagram}</a></div>
+            {CONTACT.phone && (
+              <div><span>PHONE</span><a href={`tel:${CONTACT.phone.replace(/\s/g, "")}`}>{CONTACT.phone}</a></div>
+            )}
+            <div><span>INSTAGRAM</span><a href={CONTACT.instagramUrl} target="_blank" rel="noopener noreferrer">{CONTACT.instagram}</a></div>
             <div><span>BASED IN</span><b>{CONTACT.base}</b></div>
             <div><span>AVAILABLE</span><b>{CONTACT.reach}</b></div>
           </div>

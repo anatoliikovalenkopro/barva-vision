@@ -2,8 +2,9 @@
 
 export const CONTACT = {
   email: "hello@barvavision.com",
-  phone: "+00 000 000 000",
-  instagram: "@BARVAVISION",
+  phone: "", // add your number here, e.g. "+1 780 000 0000" — the Phone line appears automatically
+  instagram: "@barvavision",
+  instagramUrl: "https://www.instagram.com/barvavision",
   base: "Alberta",
   reach: "Across Canada",
 };
