@@ -57,7 +57,7 @@ async function sendEnquiry(body) {
     `Venue / city: ${e.venue || "—"}`, `Interested in: ${e.service || "—"}`, "", e.message,
   ].join("\n");
   location.href = `mailto:${CONTACT.email}?subject=${encodeURIComponent("Wedding enquiry — " + e.names)}&body=${encodeURIComponent(text)}`;
-  return { ok: true };
+  return { ok: true, via: "mailto" };
 }
 
 const local = {

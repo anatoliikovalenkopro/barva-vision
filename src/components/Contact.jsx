@@ -8,6 +8,7 @@ const EMPTY = { names: "", email: "", date: "", venue: "", service: "Wedding Fil
 export default function Contact({ prefill }) {
   const [form, setForm] = useState(EMPTY);
   const [status, setStatus] = useState("idle"); // idle | sending | sent
+  const [viaMail, setViaMail] = useState(false);
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -21,7 +22,8 @@ export default function Contact({ prefill }) {
     setStatus("sending");
     setError("");
     try {
-      await post("/api/enquiry", form);
+      const res = await post("/api/enquiry", form);
+      setViaMail(res?.via === "mailto");
       setStatus("sent");
     } catch (err) {
       setError(err.message);
@@ -48,9 +50,16 @@ export default function Contact({ prefill }) {
         <Reveal as="div" className="form-card-wrap">
           {status === "sent" ? (
             <div className="form-card success">
-              <h3>Thank you!</h3>
+              <h3>{viaMail ? "Almost there!" : "Thank you!"}</h3>
               <p className="lead" style={{ margin: "0 auto" }}>
-                Your enquiry is with us. We'll reply personally by email — usually within a day or two.
+                {viaMail ? (
+                  <>
+                    Your email app should now be open with your message ready. Press <b>Send</b> there to reach us.
+                    If nothing opened, just email us at <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>.
+                  </>
+                ) : (
+                  "Your enquiry is with us. We'll reply personally by email — usually within a day or two."
+                )}
               </p>
               <button className="btn btn-ghost btn-sm" style={{ marginTop: 20 }} onClick={() => { setForm(EMPTY); setStatus("idle"); }}>
                 Send another
