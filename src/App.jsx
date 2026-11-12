@@ -10,7 +10,7 @@ import { HomePage, ServicePage, WeddingsPage, PricesPage, ContactPage } from "./
 import WorkPage from "./pages/WorkPage.jsx";
 
 const TITLES = {
-  "/": "Barva Vision — Music Video, Live Shows, Events & Weddings · Alberta",
+  "/": "Barva Vision — Video Production Company | Alberta & Canada",
   "/music-videos": "Music Video — Barva Vision",
   "/live-shows": "Live Shows & Concert Videography — Barva Vision",
   "/events": "Event Videography — Barva Vision",
