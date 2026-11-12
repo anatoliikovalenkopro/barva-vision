@@ -1,4 +1,5 @@
-import { WEDDING_SERVICES } from "../../shared/siteData.js";
+import { FILMS, PHOTOS, WEDDING_SERVICES } from "../../shared/siteData.js";
+import PhotoGallery from "../components/PhotoGallery.jsx";
 import { Link } from "../router.jsx";
 import { SERVICE_PAGES } from "./servicePages.js";
 import Reveal from "../components/Reveal.jsx";
@@ -80,8 +81,12 @@ export function ServicePage({ path }) {
   return (
     <>
       <Hero {...p} />
+      {p.photos?.first && <PhotoGallery photos={PHOTOS[p.photos.key]} title={p.photos.title} em={p.photos.em} lead={p.photos.lead} />}
       {p.kinds && <Services items={p.kinds} eyebrow={p.eyebrow} title={p.kindsTitle} em={p.kindsEm} />}
-      <Work cat={p.cat} tint="tint-sage" title="Recent" em="work" reelName={`${p.eyebrow.toLowerCase()} reel`} service={p.service} />
+      {(FILMS.some((f) => f.cat === p.cat) || !p.photos) && (
+        <Work cat={p.cat} tint="tint-sage" title="Recent" em="work" reelName={`${p.eyebrow.toLowerCase()} reel`} service={p.service} />
+      )}
+      {p.photos && !p.photos.first && <PhotoGallery photos={PHOTOS[p.photos.key]} title={p.photos.title} em={p.photos.em} lead={p.photos.lead} />}
       <Process />
       <Prices ids={[p.priceId]} title="Pricing" em="" lead="Starting price below — we confirm the final quote after a quick chat." />
       <CtaBand service={p.service} />
@@ -116,7 +121,7 @@ export function PricesPage() {
   return (
     <>
       <PageHero eyebrow="PRICES" title="Clear, honest" em="pricing." visual={false}
-        lead="Special prices right now: music videos from C$400, live shows from C$250, events C$200/hour — and wedding films from C$400 at 2027 launch rates." />
+        lead="Special prices right now: music videos from C$400, live shows from C$250, events C$200/hour. Photography C$150/hour, and wedding films from C$400 at 2027 launch rates." />
       <Prices title="All" em="services" lead="" tint="" />
       <CtaBand />
     </>

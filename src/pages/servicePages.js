@@ -10,6 +10,7 @@ export const SERVICE_PAGES = {
     priceId: "music-videos",
     service: "Music Video",
     cat: "Music Video",
+    photos: { key: "studio", title: "In the", em: "studio", lead: "Behind the scenes and artist portraits from recording sessions." },
   },
   "/live-shows": {
     theme: "live",
@@ -20,6 +21,7 @@ export const SERVICE_PAGES = {
     lead: "Concerts, gigs, festivals and album launches — multi-angle coverage, clean audio sync and a film that brings the room back.",
     priceId: "live-shows",
     service: "Concert / Live Performance",
+    photos: { key: "live", first: true, title: "From the", em: "stage", lead: "Concert photography from recent shows — the light, the sweat and the moment." },
     cat: "Concert",
     kindsTitle: "What you",
     kindsEm: "get",

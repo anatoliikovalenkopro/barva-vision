@@ -7,6 +7,7 @@ const SERVICES = [
   "Music Video",
   "Concert / Live Performance",
   "Event",
+  "Photography",
   "Wedding Film",
   "Wedding Film + Drone",
   "Wedding Film + Second Filmmaker",

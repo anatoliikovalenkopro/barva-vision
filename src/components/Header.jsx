@@ -12,7 +12,7 @@ export const SERVICE_LINKS = [
 
 const NAV = [
   { path: "/", label: "Home" },
-  { path: "/#work", label: "Work" },
+  { path: "/work", label: "Work" },
   { label: "Services", children: SERVICE_LINKS },
   { path: "/prices", label: "Pricing" },
   { path: "/contact", label: "About & Contact" },

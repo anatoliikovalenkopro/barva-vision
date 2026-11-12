@@ -2,3 +2,7 @@ node_modules
 dist
 .env
 server/data/*.json
+
+# original full-size photos (web copies are in public/photos)
+src/photo/
+.DS_Store

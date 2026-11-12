@@ -20,6 +20,38 @@ export const FILMS = [
   { id: "h5iX21z1sXI", artist: "Marissa K", song: "Bird Flew Over The Water", cat: "Music Video" },
 ];
 
+// Photos shown in the galleries (web-sized copies live in public/photos/).
+export const PHOTOS = {
+  live: [
+    { src: "/photos/live/live-01.jpg", sm: "/photos/live/sm/live-01.jpg", wide: false },
+    { src: "/photos/live/live-02.jpg", sm: "/photos/live/sm/live-02.jpg", wide: false },
+    { src: "/photos/live/live-03.jpg", sm: "/photos/live/sm/live-03.jpg", wide: false },
+    { src: "/photos/live/live-04.jpg", sm: "/photos/live/sm/live-04.jpg", wide: false },
+    { src: "/photos/live/live-05.jpg", sm: "/photos/live/sm/live-05.jpg", wide: false },
+    { src: "/photos/live/live-06.jpg", sm: "/photos/live/sm/live-06.jpg", wide: false },
+    { src: "/photos/live/live-07.jpg", sm: "/photos/live/sm/live-07.jpg", wide: true },
+    { src: "/photos/live/live-08.jpg", sm: "/photos/live/sm/live-08.jpg", wide: false },
+    { src: "/photos/live/live-09.jpg", sm: "/photos/live/sm/live-09.jpg", wide: false },
+    { src: "/photos/live/live-10.jpg", sm: "/photos/live/sm/live-10.jpg", wide: true },
+    { src: "/photos/live/live-11.jpg", sm: "/photos/live/sm/live-11.jpg", wide: false },
+    { src: "/photos/live/live-12.jpg", sm: "/photos/live/sm/live-12.jpg", wide: false },
+  ],
+  studio: [
+    { src: "/photos/studio/studio-01.jpg", sm: "/photos/studio/sm/studio-01.jpg", wide: true },
+    { src: "/photos/studio/studio-02.jpg", sm: "/photos/studio/sm/studio-02.jpg", wide: true },
+    { src: "/photos/studio/studio-03.jpg", sm: "/photos/studio/sm/studio-03.jpg", wide: true },
+    { src: "/photos/studio/studio-04.jpg", sm: "/photos/studio/sm/studio-04.jpg", wide: true },
+    { src: "/photos/studio/studio-05.jpg", sm: "/photos/studio/sm/studio-05.jpg", wide: false },
+    { src: "/photos/studio/studio-06.jpg", sm: "/photos/studio/sm/studio-06.jpg", wide: true },
+    { src: "/photos/studio/studio-07.jpg", sm: "/photos/studio/sm/studio-07.jpg", wide: false },
+    { src: "/photos/studio/studio-08.jpg", sm: "/photos/studio/sm/studio-08.jpg", wide: false },
+    { src: "/photos/studio/studio-09.jpg", sm: "/photos/studio/sm/studio-09.jpg", wide: false },
+    { src: "/photos/studio/studio-10.jpg", sm: "/photos/studio/sm/studio-10.jpg", wide: true },
+    { src: "/photos/studio/studio-11.jpg", sm: "/photos/studio/sm/studio-11.jpg", wide: false },
+    { src: "/photos/studio/studio-12.jpg", sm: "/photos/studio/sm/studio-12.jpg", wide: false },
+  ],
+};
+
 // Unique artist names, used for the "Worked with" credits.
 export const artistsOf = (films) => [...new Set(films.map((f) => f.artist).filter(Boolean))];
 
@@ -44,6 +76,7 @@ export const FEATURED = [
 // Menu / pages.
 export const PAGES = [
   { path: "/", label: "Home" },
+  { path: "/work", label: "Work" },
   { path: "/music-videos", label: "Music Video" },
   { path: "/live-shows", label: "Live Shows" },
   { path: "/events", label: "Events" },
@@ -83,6 +116,12 @@ export const PRICING = [
     ],
   },
   {
+    id: "photography", tab: "Photography", title: "Photography",
+    tiers: [
+      { name: "PHOTOGRAPHY", price: "C$150/hr", desc: "Concerts, portraits, weddings and events — all one simple hourly rate.", feats: ["Concert & live photography", "Portraits & artist photos", "Wedding photography", "Event photography", "Colour-edited, high-resolution photos"] },
+    ],
+  },
+  {
     id: "wedding-films", tab: "Weddings", title: "Wedding Films", badge: "2027 launch rates — first 5 weddings",
     tiers: [
       { name: "STARTER", price: "C$1,000", early: "C$400", desc: "4K delivery, up to 1.5 hour film.", feats: ["Up to 4 hours", "One filmmaker", "3–4 min highlight film", "Licensed music", "4K delivery"] },
@@ -105,12 +144,13 @@ export function offerAsText() {
   const find = (id) => PRICING.find((c) => c.id === id);
   const wf = find("wedding-films");
   const lines = [];
-  lines.push(`Studio: Barva Vision — video production: music videos, live shows (concerts, gigs, festivals), events and weddings. Most clients are musicians and artists. Based in ${CONTACT.base}, available ${CONTACT.reach.replace(/^Across/, "across")}.`);
-  for (const id of ["music-videos", "live-shows", "events"]) {
+  lines.push(`Studio: Barva Vision — video production: music videos, live shows (concerts, gigs, festivals), events and weddings, plus concert and artist photography. Most clients are musicians and artists. Based in ${CONTACT.base}, available ${CONTACT.reach.replace(/^Across/, "across")}.`);
+  for (const id of ["music-videos", "live-shows", "events", "photography"]) {
     const c = find(id);
     const t = c.tiers[0];
     const fr = t.from ? "from " : "";
-    lines.push(`${c.title}: special price ${fr}${t.early} (regular ${fr}${t.price}). ${t.desc} Includes: ${t.feats.join(", ")}.`);
+    const price = t.early ? `special price ${fr}${t.early} (regular ${fr}${t.price})` : `${fr}${t.price}`;
+    lines.push(`${c.title}: ${price}. ${t.desc} Includes: ${t.feats.join(", ")}.`);
   }
   lines.push(`Weddings: now booking ${BOOKING.year}. The first ${BOOKING.totalSpots} weddings get special launch rates (${BOOKING.spotsLeft} of ${BOOKING.totalSpots} launch spots currently available).`);
   lines.push("Wedding Film packages (launch rate, regular price in brackets):");

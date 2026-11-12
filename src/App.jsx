@@ -7,6 +7,7 @@ import { isServerMode } from "./api.js";
 import { usePath } from "./router.jsx";
 import { SERVICE_PAGES } from "./pages/servicePages.js";
 import { HomePage, ServicePage, WeddingsPage, PricesPage, ContactPage } from "./pages/Pages.jsx";
+import WorkPage from "./pages/WorkPage.jsx";
 
 const TITLES = {
   "/": "Barva Vision — Music Video, Live Shows, Events & Weddings · Alberta",
@@ -15,6 +16,7 @@ const TITLES = {
   "/events": "Event Videography — Barva Vision",
   "/weddings": "Wedding Films — Barva Vision",
   "/prices": "Prices — Barva Vision",
+  "/work": "Work — Barva Vision",
   "/about": "About & Contact — Barva Vision",
   "/contact": "About & Contact — Barva Vision",
 };
@@ -46,6 +48,7 @@ export default function App() {
   if (SERVICE_PAGES[path]) page = <ServicePage key={path} path={path} />;
   else if (wedding) page = <WeddingsPage onPrefill={setPrefill} />;
   else if (path === "/prices") page = <PricesPage />;
+  else if (path === "/work") page = <WorkPage />;
   else if (path === "/contact" || path === "/about") page = <ContactPage prefill={prefill} />;
   else page = <HomePage />;
 

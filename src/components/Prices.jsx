@@ -3,7 +3,7 @@ import { BOOKING, PRICING } from "../../shared/siteData.js";
 import { Link, contactLink } from "../router.jsx";
 import Reveal from "./Reveal.jsx";
 
-const QUOTE_SERVICE = { "music-videos": "Music Video", "live-shows": "Concert / Live Performance", events: "Event" };
+const QUOTE_SERVICE = { "music-videos": "Music Video", "live-shows": "Concert / Live Performance", events: "Event", photography: "Photography" };
 
 export default function Prices({
   ids = PRICING.map((c) => c.id),

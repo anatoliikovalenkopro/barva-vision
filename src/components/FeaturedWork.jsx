@@ -33,7 +33,7 @@ export default function FeaturedWork() {
             <div className="hh-kicker"><span className="red-line" />FEATURED WORK</div>
             {artists.length > 0 && <p className="worked-with"><span>Worked with</span>{artists.join(" · ")}</p>}
           </div>
-          <Link to="/music-videos" className="fw-all">View all projects <span>→</span></Link>
+          <Link to="/work" className="fw-all">View all projects <span>→</span></Link>
         </div>
         <div className="fw-grid">
           {FILMS.slice(0, 6).map((f) => (

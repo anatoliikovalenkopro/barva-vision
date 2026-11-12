@@ -50,7 +50,7 @@ const submitEnquiryTool = {
     properties: {
       names: { type: "string", description: "Visitor's name, artist or band name" },
       email: { type: "string", description: "Contact email" },
-      service: { type: "string", description: "Service they want: Music Video, Concert / Live Performance, Event, Wedding Film or Something else" },
+      service: { type: "string", description: "Service they want: Music Video, Concert / Live Performance, Event, Wedding Film, Photography or Something else" },
       date: { type: "string", description: "Shoot, show, event or wedding date or time of year, empty string if unknown" },
       venue: { type: "string", description: "Venue or city, empty string if unknown" },
       notes: { type: "string", description: "Short summary of what they asked for or want" },

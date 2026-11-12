@@ -10,6 +10,9 @@ const find = (id) => {
 
 export function demoChat(text) {
   const t = text.toLowerCase();
+  if (/(photo|photographer|portrait|headshot|press shot)/.test(t)) {
+    return `Yes — we also do photography for concerts, portraits, weddings and events, all at ${find("photography")}. Tell us the date and what you need in the contact form below.`;
+  }
   if (/(music|video clip|song|artist|band|rapper|singer|concert|live|show|gig|perform|festival|event|party|launch|corporate)/.test(t)) {
     return `Yes — we film music videos (${find("music-videos")}), live shows (${find("live-shows")}) and events (${find("events")}). Tell us your idea, the date and the location in the contact form below and we'll reply personally with a quote.`;
   }

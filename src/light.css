@@ -1,0 +1,101 @@
+/* ===================================================================
+   Warm cream (light) look for every page except Weddings.
+   Loaded last so it overrides the earlier dark styles.
+   =================================================================== */
+html.theme-studio,html.theme-studio.theme-neutral,html.theme-studio.theme-music,html.theme-studio.theme-live,html.theme-studio.theme-events{
+  --cream:#f6f1e9;--ivory:#fffdf9;--blush:#efe7da;--sage:#efe7da;--lav:#efe7da;--sky:#efe7da;
+  --line:#e3d9ca;--ink:#1d1814;--muted:#6e645b;
+  --gold:#e63a2e;--rose:#e63a2e;--rose-d:#d2321f;
+  color-scheme:light;
+}
+html.theme-studio.theme-music{--gold:#e0397f;--rose-d:#8b5cff}
+html.theme-studio.theme-events{--gold:#2c4bff;--rose:#2c4bff;--rose-d:#2c4bff}
+html.theme-studio body::before{opacity:.045;mix-blend-mode:multiply}
+html.theme-studio ::selection{background:#e63a2e;color:#fff}
+
+/* header */
+html.theme-studio .masthead,html.theme-studio.theme-music .masthead,html.theme-studio.theme-live .masthead,html.theme-studio.theme-events .masthead{background:rgba(246,241,233,.88);border-bottom-color:var(--line)}
+html.theme-studio .brand-divider{background:var(--line)}
+html.theme-studio .burger{border-color:rgba(29,24,20,.25)}
+
+/* buttons */
+html.theme-studio .btn{background:var(--ink);border-color:var(--ink);color:#fff}
+html.theme-studio .btn:hover,html.theme-studio.theme-neutral .btn:hover{background:#e63a2e;border-color:#e63a2e;color:#fff}
+html.theme-studio .btn-ghost,html.theme-studio.theme-music .btn-ghost,html.theme-studio.theme-live .btn-ghost,html.theme-studio.theme-events .btn-ghost{background:transparent;color:var(--ink);border:1.5px solid rgba(29,24,20,.3)}
+html.theme-studio .btn-ghost:hover,html.theme-studio.theme-neutral .btn-ghost:hover,html.theme-studio.theme-music .btn-ghost:hover{background:var(--ink);border-color:var(--ink);color:#fff}
+html.theme-studio .btn-outline{background:transparent;border-color:rgba(29,24,20,.4);color:var(--ink)}
+html.theme-studio .btn-red{background:#e63a2e;border-color:#e63a2e;color:#fff}
+html.theme-studio .btn-red:hover{background:#c92d22;border-color:#c92d22;color:#fff}
+html.theme-studio .btn-outline:hover{background:var(--ink);border-color:var(--ink);color:#fff}
+html.theme-studio .tab,html.theme-studio.theme-live .tab,html.theme-studio.theme-events .tab{border-color:rgba(29,24,20,.22)}
+html.theme-studio .tab.active{background:var(--ink);border-color:var(--ink);color:#fff}
+
+/* cards, sections */
+html.theme-studio .svc-icon,html.theme-studio .svc:nth-child(n) .svc-icon{background:#f1e9dc}
+html.theme-studio .fthumb{background:#e9e0d2}
+html.theme-studio .reel-tile .fplay{background:#fff}
+html.theme-studio .reel-tile::after{background-image:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.6) 50%,transparent 70%)}
+html.theme-studio .tier-desc{color:var(--ink)}
+html.theme-studio .price-badge,html.theme-studio .tier-flag{background:var(--ink);color:#fff}
+html.theme-studio .tier,html.theme-studio .form-card,html.theme-studio .addon-card{box-shadow:0 20px 50px -34px rgba(70,50,30,.35)}
+html.theme-studio .form-card input:focus,html.theme-studio .form-card select:focus,html.theme-studio .form-card textarea:focus{border-color:#e63a2e;box-shadow:0 0 0 3px rgba(230,58,46,.15)}
+html.theme-studio .cta-band,html.theme-studio.theme-music .cta-band{background:#ece2d3;border-top:1px solid var(--line)}
+html.theme-studio .site-footer,html.theme-studio.theme-neutral .site-footer{background:#ece2d3;color:var(--ink);border-top:1px solid var(--line)}
+html.theme-studio .footer-meta{color:var(--muted)}
+
+/* Home hero */
+html.theme-studio .home-hero{background:var(--cream);color:var(--ink)}
+html.theme-studio .hh-haze{background:radial-gradient(ellipse 38% 50% at 76% 40%,rgba(230,58,46,.16),transparent 70%),radial-gradient(ellipse 34% 44% at 60% 66%,rgba(60,90,200,.12),transparent 70%),radial-gradient(ellipse 30% 40% at 92% 12%,rgba(224,57,127,.12),transparent 70%)}
+html.theme-studio .home-hero .hh-fade{background:none}
+html.theme-studio .hh-kicker{color:var(--ink)}
+html.theme-studio .hh-title{color:var(--ink)}
+html.theme-studio .hh-lead{color:var(--muted)}
+html.theme-studio .hh-icon{color:var(--ink);border-left-color:rgba(29,24,20,.15)}
+html.theme-studio .hh-icon:hover{color:#e63a2e}
+html.theme-studio .rs-frame{box-shadow:0 30px 60px -30px rgba(60,40,25,.45)}
+
+/* Featured work */
+html.theme-studio .featured-work{background:var(--cream);color:var(--ink)}
+html.theme-studio .featured-work .worked-with,html.theme-studio .fw-all{color:var(--ink)}
+
+/* Music Video page */
+html.theme-studio.theme-music .music-hero{background:radial-gradient(ellipse at 12% 0%,rgba(224,57,127,.14),transparent 50%),radial-gradient(ellipse at 90% 90%,rgba(139,92,255,.14),transparent 50%),var(--cream)}
+
+/* Live Shows page */
+html.theme-studio.theme-live .live-hero{background:repeating-linear-gradient(135deg,rgba(230,58,46,.06) 0 14px,transparent 14px 28px),var(--cream)}
+html.theme-studio.theme-live .gig-poster{background:#fff}
+html.theme-studio.theme-live #services .svc{border-color:rgba(29,24,20,.22)}
+html.theme-studio.theme-live .live-tag{color:#e63a2e}
+
+/* Events page keeps its paper + blue look on the shared cream */
+html.theme-studio.theme-events .events-hero{background:var(--cream)}
+
+/* ---- photo galleries ---- */
+.photo-gallery .section-head{margin-bottom:26px}
+html.theme-studio .photo-gallery h2{font-size:clamp(24px,2.6vw,36px)}
+.pg-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.pg-item{display:block;width:100%;aspect-ratio:4/5;margin:0;padding:0;border:0;border-radius:14px;overflow:hidden;background:var(--blush);cursor:zoom-in}
+.pg-item img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.pg-item:hover img{transform:scale(1.04)}
+.pg-price{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:12px;padding:20px 24px;border:1px solid var(--line);border-radius:18px;background:var(--ivory)}
+.pg-price-label{display:block;font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:2px}
+.pg-price b{font-family:var(--serif);font-size:34px;font-weight:500;line-height:1}
+.pg-price b small{font-family:var(--sans);font-size:13px;color:var(--muted);margin-left:4px}
+.pg-price p{flex:1;min-width:220px;color:var(--muted);font-size:14.5px}
+.pv{position:fixed;inset:0;z-index:320;background:rgba(18,14,11,.95);display:flex;align-items:center;justify-content:center;padding:56px 70px}
+.pv img{max-width:100%;max-height:100%;object-fit:contain;border-radius:6px;box-shadow:0 30px 80px -20px rgba(0,0,0,.7)}
+.pv-btn{position:absolute;top:50%;transform:translateY(-50%);width:50px;height:50px;border-radius:50%;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.08);color:#fff;font-size:30px;line-height:1;cursor:pointer}
+.pv-btn:hover{background:#e63a2e;border-color:#e63a2e}
+.pv-prev{left:14px}.pv-next{right:14px}
+.pv-close{position:absolute;top:14px;right:14px;background:transparent;border:1px solid rgba(255,255,255,.4);border-radius:999px;color:#fff;font-size:11px;letter-spacing:.2em;padding:10px 16px;cursor:pointer}
+.pv-count{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.7);font-size:12px;letter-spacing:.2em}
+@media(max-width:640px){.pv{padding:56px 10px}.pv-btn{width:40px;height:40px;font-size:24px}.pg-grid{grid-template-columns:repeat(2,1fr);gap:8px}}
+/* Live Shows: compact hero so photos show sooner */
+html.theme-studio.theme-live .live-hero{padding:clamp(28px,3.5vw,48px) 0}
+html.theme-studio.theme-live .live-copy h1{font-size:clamp(38px,4.6vw,68px);margin-bottom:16px}
+html.theme-studio.theme-live .gig-poster{max-width:300px;padding:22px 18px 18px;box-shadow:10px 10px 0 #e63a2e}
+html.theme-studio.theme-live .gp-big{font-size:clamp(70px,8vw,112px)}
+html.theme-studio.theme-live .gp-sub{font-size:16px}
+html.theme-studio.theme-live .gp-lines{font-size:15px}
+html.theme-studio.theme-live #photos{padding-top:clamp(28px,3.5vw,48px)}
+@media(max-width:1000px) and (min-width:641px){.pg-grid{grid-template-columns:repeat(3,1fr)}}
