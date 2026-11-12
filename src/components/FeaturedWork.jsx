@@ -22,7 +22,7 @@ export default function FeaturedWork() {
   const [playing, setPlaying] = useState(null);
   // Real films first, then placeholders (skipping categories already covered) to fill 4 cards.
   const taken = new Set(FILMS.map((f) => f.cat));
-  const fillers = FEATURED.filter((f) => !taken.has(f.cat)).slice(0, Math.max(0, 4 - FILMS.length));
+  const fillers = FEATURED.filter((f) => !taken.has(f.cat)).slice(0, Math.max(0, 3 - FILMS.length));
   const artists = artistsOf(FILMS);
 
   return (
@@ -36,12 +36,12 @@ export default function FeaturedWork() {
           <Link to="/music-videos" className="fw-all">View all projects <span>→</span></Link>
         </div>
         <div className="fw-grid">
-          {FILMS.slice(0, 4).map((f) => (
+          {FILMS.slice(0, 6).map((f) => (
             <button key={f.id} className="fw-card" onClick={() => setPlaying(f)} aria-label={`Play ${f.artist} — ${f.song}`}>
               <img src={thumb(f.id)} alt="" loading="lazy" />
               <span className="fw-shade" />
               <span className="fw-play"><Icon name="play" /></span>
-              <span className="fw-meta"><b>{f.artist}</b><small>{f.song} · {f.cat}</small></span>
+              <span className="fw-meta"><b>{f.artist}</b><small>{f.song}</small></span>
             </button>
           ))}
           {fillers.map((f) => <Placeholder key={f.title} f={f} />)}

@@ -42,13 +42,13 @@ export default function HomeHero() {
     <section className="home-hero">
       <div className="hh-bg" aria-hidden="true">
         <span className="hh-haze" />
-        <ReelStack />
         {hasPhoto && <img className="hh-photo" src="/images/hero.jpg" alt="" onError={() => setHasPhoto(false)} />}
         <span className="hh-fade" />
       </div>
       <span className="hh-bracket top" aria-hidden="true" /><span className="hh-bracket bottom" aria-hidden="true" />
 
       <div className="wrap hh-inner">
+        <ReelStack />
         <div className="hh-kicker"><span className="red-line" />VIDEO PRODUCTION <span className="sep">/</span> ALBERTA &amp; CANADA</div>
         <h1 className="hh-title">Bring Your<br />Story to Screen<span className="red-dot">.</span></h1>
         <p className="hh-lead">

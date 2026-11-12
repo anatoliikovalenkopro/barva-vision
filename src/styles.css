@@ -20,7 +20,7 @@ button,input,select,textarea{font-family:var(--sans);color:inherit}
 img{display:block;max-width:100%}
 em{font-style:italic;color:var(--rose-d)}
 
-.wrap{max-width:1180px;margin:0 auto;padding:0 clamp(20px,4vw,48px)}
+.wrap{max-width:1320px;margin:0 auto;padding:0 clamp(20px,4vw,48px)}
 section[id]{scroll-margin-top:76px}
 .section{padding:clamp(64px,9vw,112px) 0}
 .tint-sage{background:var(--sage)}
