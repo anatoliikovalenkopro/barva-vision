@@ -36,9 +36,10 @@ export default function App() {
   useEffect(() => {
     const theme = SERVICE_PAGES[path]?.theme;
     const root = document.documentElement.classList;
-    root.toggle("theme-studio", !wedding);
+    root.toggle("theme-studio", true);
     for (const t of ["music", "live", "events"]) root.toggle(`theme-${t}`, theme === t);
-    root.toggle("theme-neutral", !wedding && !theme);
+    root.toggle("theme-neutral", !theme);
+    root.toggle("theme-wedding", wedding);
     document.title = TITLES[path] || TITLES["/"];
   }, [path, wedding]);
 

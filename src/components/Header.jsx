@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { BOOKING } from "../../shared/siteData.js";
 import { Link, contactLink } from "../router.jsx";
 import Icon from "./Icon.jsx";
-import { Flower } from "./Retro.jsx";
 
 export const SERVICE_LINKS = [
   { path: "/music-videos", label: "Music Video", icon: "note" },
@@ -46,7 +45,6 @@ export default function Header({ path, wedding }) {
     <>
       <header className="masthead" id="nav">
         <Link to="/" className="brand">
-          <Flower className="brand-flower" size={34} />
           <span className="brand-text">
             <span className="brand-name">Barva Vision</span>
             <span className="brand-tag">{wedding ? "Wedding films" : "Video production"}</span>
@@ -73,7 +71,6 @@ export default function Header({ path, wedding }) {
             ),
           )}
         </nav>
-        <span className="hdr-tag" aria-hidden="true"><i>Film / Photography / Sound</i><span className="hdr-record" /></span>
         <Link className="nav-cta" to={contactLink(wedding ? "Wedding Film" : "")}>
           {wedding ? "Check your date" : "Get a quote"} <Icon name="arrowUR" />
         </Link>

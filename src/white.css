@@ -1,0 +1,97 @@
+/* ===================================================================
+   Clean white look for every page except Weddings. Loaded after light.css.
+   =================================================================== */
+html.theme-studio,html.theme-studio.theme-neutral,html.theme-studio.theme-music,html.theme-studio.theme-live,html.theme-studio.theme-events{
+  --cream:#ffffff;--ivory:#ffffff;--blush:#f5f5f4;--sage:#f5f5f4;--lav:#f5f5f4;--sky:#f5f5f4;
+  --line:#e7e5e2;--ink:#111111;--muted:#5f5f5f;
+  --gold:#e2231a;--rose:#e2231a;--rose-d:#e2231a;
+}
+html.theme-studio body::before{display:none}
+html.theme-studio ::selection{background:#e2231a;color:#fff}
+html.theme-studio .masthead,html.theme-studio.theme-music .masthead,html.theme-studio.theme-live .masthead,html.theme-studio.theme-events .masthead{background:rgba(255,255,255,.92);border-bottom-color:var(--line)}
+html.theme-studio .btn:hover,html.theme-studio.theme-neutral .btn:hover{background:#e2231a;border-color:#e2231a;color:#fff}
+
+/* Home */
+html.theme-studio .hh-haze{background:none}
+html.theme-studio .red-line{background:#e2231a}
+html.theme-studio .red-dot{color:#e2231a}
+html.theme-studio .btn-red{background:#e2231a;border-color:#e2231a}
+html.theme-studio .worked-with span{color:#e2231a}
+html.theme-studio .rs-play svg{background:#e2231a;box-shadow:0 0 0 10px rgba(226,35,26,.12),0 20px 40px -12px rgba(0,0,0,.3)}
+html.theme-studio .rs-frame{box-shadow:0 24px 50px -24px rgba(0,0,0,.35)}
+
+/* cards & sections */
+html.theme-studio .svc-icon,html.theme-studio .svc:nth-child(n) .svc-icon{background:#f5f5f4}
+html.theme-studio .svc-icon svg{stroke:#e2231a}
+html.theme-studio .tier,html.theme-studio .form-card,html.theme-studio .addon-card,html.theme-studio .pg-price{border:1px solid var(--line);box-shadow:0 14px 34px -26px rgba(0,0,0,.3)}
+html.theme-studio .form-card input,html.theme-studio .form-card select,html.theme-studio .form-card textarea{background:#fafafa;border-color:var(--line)}
+html.theme-studio .tier-name,html.theme-studio .pg-price-label,html.theme-studio .addons-head{color:#e2231a}
+html.theme-studio .reel-tile{background:#f5f5f4}
+html.theme-studio .tint-sage,html.theme-studio .tint-blush,html.theme-studio .tint-lav{background:#fafafa}
+
+/* light grey strip + footer */
+html.theme-studio .cta-band,html.theme-studio.theme-music .cta-band,html.theme-studio.theme-live .cta-band,html.theme-studio.theme-events .cta-band{background:#f5f5f4;border-top:1px solid var(--line)}
+html.theme-studio .cta-band h2,html.theme-studio.theme-live .cta-band h2,html.theme-studio.theme-events .cta-band h2{color:#111}
+html.theme-studio .cta-band h2 em,html.theme-studio.theme-live .cta-band h2 em,html.theme-studio.theme-events .cta-band h2 em{color:#e2231a;-webkit-text-fill-color:#e2231a;background:none}
+html.theme-studio .cta-band .btn,html.theme-studio.theme-live .cta-band .btn,html.theme-studio.theme-events .cta-band .btn{background:#111;border-color:#111;color:#fff}
+html.theme-studio .cta-band .btn:hover{background:#e2231a;border-color:#e2231a;color:#fff}
+html.theme-studio .site-footer,html.theme-studio.theme-neutral .site-footer{background:#f5f5f4;color:#111;border-top:1px solid var(--line)}
+html.theme-studio .footer-meta{color:#7a7a7a;border-top-color:var(--line)}
+
+/* Music Video page: black + red */
+html.theme-studio.theme-music .music-hero{background:#fff}
+html.theme-studio.theme-music .mh-tag span{color:#e2231a}
+html.theme-studio.theme-music .mh-title span,html.theme-studio.theme-music h2 em{background:none;-webkit-text-fill-color:#e2231a;color:#e2231a}
+html.theme-studio.theme-music .btn{background:#111;color:#fff;border:1px solid #111}
+html.theme-studio.theme-music .btn:hover{background:#e2231a;border-color:#e2231a;filter:none}
+html.theme-studio.theme-music .btn-ghost{background:transparent;color:#111;border:1.5px solid rgba(17,17,17,.3)}
+html.theme-studio.theme-music .tab.active{background:#111;color:#fff;border-color:#111}
+html.theme-studio.theme-music .dnav a.active::after{background:#e2231a;height:3px}
+
+/* Live Shows / Events heroes on white */
+html.theme-studio.theme-live .live-hero{background:repeating-linear-gradient(135deg,rgba(226,35,26,.05) 0 14px,transparent 14px 28px),#fff}
+html.theme-studio.theme-live .gig-poster{background:#fff;box-shadow:10px 10px 0 #e2231a,0 0 0 1px var(--line)}
+html.theme-studio.theme-events .events-hero{background:#fff}
+html.theme-studio.theme-events h1 em,html.theme-studio.theme-events h2 em{color:#e2231a}
+
+/* Work page */
+.work-bar{display:flex;flex-direction:column;gap:18px;padding-top:6px;padding-bottom:6px}
+.work-bar .worked-with{margin-top:0}
+.work-filters{position:sticky;top:76px;z-index:5;padding:10px 0;background:var(--cream)}
+.work-filters .tab small{opacity:.55;margin-left:4px}
+.work-group{padding:clamp(32px,4vw,56px) 0}
+html.theme-studio .work-group h2{font-size:clamp(24px,2.6vw,36px)}
+.work-group .film-grid{grid-template-columns:repeat(auto-fill,minmax(320px,1fr))}
+
+/* photo carousel */
+.pg-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px}
+.pg-arrows{display:flex;gap:10px;flex:none;margin-bottom:26px}
+.pg-arrows button{width:46px;height:46px;border-radius:50%;border:1.5px solid var(--ink);background:transparent;color:var(--ink);font-size:24px;line-height:1;cursor:pointer;transition:background .2s,color .2s,opacity .2s}
+.pg-arrows button:hover:not(:disabled){background:var(--ink);color:#fff}
+.pg-arrows button:disabled{opacity:.25;cursor:default}
+.pg-track{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;padding-bottom:4px}
+.pg-track::-webkit-scrollbar{display:none}
+.pg-track .pg-item{flex:0 0 auto;width:auto;height:clamp(220px,24vw,300px);aspect-ratio:4/5;scroll-snap-align:start}
+.pg-track .pg-item.wide{aspect-ratio:3/2}
+.pg-price{margin-top:22px}
+@media(max-width:640px){.pg-track .pg-item{height:240px}.pg-arrows{display:none}}
+
+/* ---- Weddings page on the white theme ---- */
+html.theme-wedding .announce{background:#111;color:#fff;letter-spacing:.08em}
+html.theme-wedding .announce b{color:#fff}
+html.theme-wedding .hero{background:#fff}
+html.theme-wedding .hero h1{font-size:clamp(40px,5.2vw,76px);line-height:1.02}
+html.theme-wedding .arch{box-shadow:0 24px 50px -28px rgba(0,0,0,.35)}
+html.theme-wedding .arch-stamp strong{color:#e2231a}
+html.theme-wedding .hero-facts{border-top-color:var(--line)}
+html.theme-wedding .booking{background:#fafafa}
+html.theme-wedding .poster{background:#fff;border:1px solid var(--line);box-shadow:0 24px 50px -30px rgba(0,0,0,.35);transform:none}
+html.theme-wedding .poster::before{border-color:var(--line)}
+html.theme-wedding .poster-kicker{color:#e2231a}
+html.theme-wedding .poster-sub{color:#e2231a}
+html.theme-wedding .poster-ribbon{background:#111;color:#fff}
+html.theme-wedding .poster-row b{color:#111}
+html.theme-wedding .spot{background:#e2231a;border-color:#e2231a}
+html.theme-wedding .check-list li::before{background:#e2231a;box-shadow:0 0 0 4px #fde7e5}
+html.theme-wedding .plan-panel{background:#fff;border:1px solid var(--line);box-shadow:0 20px 44px -30px rgba(0,0,0,.3)}
+html.theme-wedding .step-n{border-color:#e2231a;color:#e2231a;background:#fff}

@@ -8,10 +8,7 @@ import "./themes.css";
 import "./modern.css";
 import "./design.css";
 import "./light.css";
-import "./layout-extra.css";
-import "./sixties.css";
-import "./groovy.css";
-import "./psych.css";
+import "./white.css";
 
 document.documentElement.classList.add("js");
 createRoot(document.getElementById("root")).render(<App />);
