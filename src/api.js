@@ -33,7 +33,7 @@ async function sendEnquiry(body) {
     service: clip(body.service, 80),
     message: clip(body.message, 3000),
   };
-  if (!e.names) throw fail("Please add your names.");
+  if (!e.names) throw fail("Please add your name.");
   if (!EMAIL_RE.test(e.email)) throw fail("Please enter a valid email address.");
 
   if (FORM_ENDPOINT) {
@@ -42,7 +42,7 @@ async function sendEnquiry(body) {
       res = await fetch(FORM_ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({ ...e, _subject: `New wedding enquiry — ${e.names}`, _replyto: e.email }),
+        body: JSON.stringify({ ...e, _subject: `New enquiry (${e.service || "general"}) — ${e.names}`, _replyto: e.email }),
       });
     } catch {
       throw new Error("Can't send right now. Please try again shortly.");
@@ -53,10 +53,10 @@ async function sendEnquiry(body) {
 
   // No form service configured yet: open the visitor's email app instead.
   const text = [
-    `Names: ${e.names}`, `Email: ${e.email}`, `Wedding date: ${e.date || "—"}`,
+    `Name: ${e.names}`, `Email: ${e.email}`, `Date: ${e.date || "—"}`,
     `Venue / city: ${e.venue || "—"}`, `Interested in: ${e.service || "—"}`, "", e.message,
   ].join("\n");
-  location.href = `mailto:${CONTACT.email}?subject=${encodeURIComponent("Wedding enquiry — " + e.names)}&body=${encodeURIComponent(text)}`;
+  location.href = `mailto:${CONTACT.email}?subject=${encodeURIComponent(`Enquiry (${e.service || "general"}) — ${e.names}`)}&body=${encodeURIComponent(text)}`;
   return { ok: true, via: "mailto" };
 }
 

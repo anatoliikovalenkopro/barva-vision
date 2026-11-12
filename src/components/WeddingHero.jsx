@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { Link, contactLink } from "../router.jsx";
 
-export default function Hero() {
+export default function WeddingHero() {
   const [hasPhoto, setHasPhoto] = useState(true);
 
   return (
@@ -14,7 +15,7 @@ export default function Hero() {
             weddings the way you remember them — not staged, just felt.
           </p>
           <div className="hero-actions">
-            <a className="btn" href="#contact">Check your date</a>
+            <Link className="btn" to={contactLink("Wedding Film")}>Check your date</Link>
             <a className="btn btn-ghost" href="#plan">Plan your film</a>
           </div>
           <div className="hero-facts">

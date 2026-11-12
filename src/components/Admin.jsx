@@ -25,7 +25,7 @@ export default function Admin() {
 
   return (
     <div className="admin">
-      <a href="#home" className="u" style={{ fontSize: 13 }}>← Back to site</a>
+      <a href="/" className="u" style={{ fontSize: 13 }}>← Back to site</a>
       <h1 style={{ marginTop: 18 }}>Enquiries</h1>
       <p className="admin-meta">New messages from the contact form and the chat assistant, with an AI summary and a draft reply.</p>
 

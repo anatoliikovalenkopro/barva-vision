@@ -3,13 +3,21 @@ import { PRICING, BOOKING, CONTACT } from "./siteData.js";
 
 const wf = PRICING.find((c) => c.id === "wedding-films");
 const addons = PRICING.find((c) => c.id === "addons");
+const find = (id) => {
+  const t = PRICING.find((c) => c.id === id).tiers[0];
+  return `${t.from ? "from " : ""}${t.early || t.price}${t.early ? ` instead of ${t.price}` : ""}`;
+};
 
 export function demoChat(text) {
   const t = text.toLowerCase();
+  if (/(music|video clip|song|artist|band|rapper|singer|concert|live|show|gig|perform|festival|event|party|launch|corporate)/.test(t)) {
+    return `Yes — we film music videos (${find("music-videos")}), live shows (${find("live-shows")}) and events (${find("events")}). Tell us your idea, the date and the location in the contact form below and we'll reply personally with a quote.`;
+  }
   if (/(price|cost|how much|package|rate|\$)/.test(t)) {
-    return `Our ${BOOKING.year} wedding film launch rates (first ${BOOKING.totalSpots} weddings): ` +
+    return `Music videos ${find("music-videos")}, live shows ${find("live-shows")}, events ${find("events")}. ` +
+      `Our ${BOOKING.year} wedding film launch rates (first ${BOOKING.totalSpots} weddings): ` +
       wf.tiers.map((x) => `${x.name} ${x.early} (regular ${x.price})`).join(", ") +
-      `. A small Love Story Walk film is ${PRICING.find((c) => c.id === "love-story").tiers[0].price}. Add-ons: ` +
+      `. Wedding add-ons: ` +
       addons.tiers.map((x) => `${x.name.toLowerCase()} ${x.price}`).join(", ") + ".";
   }
   if (/(drone|second|shooter|filmmaker)/.test(t)) {
@@ -19,10 +27,10 @@ export function demoChat(text) {
     return `We're based in ${CONTACT.base} and available ${CONTACT.reach.replace(/^Across/, "across")}. Share your venue and we'll confirm the details.`;
   }
   if (/(available|availability|date|book|free)/.test(t)) {
-    return `We're booking ${BOOKING.year} weddings. Send your date and names through the contact form below and we'll check availability and reply personally.`;
+    return `We're booking ${BOOKING.year} — music videos, live shows, events and weddings. Send your date and a few details through the contact form below and we'll check availability and reply personally.`;
   }
   if (/(hi|hello|hey)\b/.test(t)) {
-    return "Hello! I can tell you about our wedding film packages, the 2027 launch rates, and how it works. What would you like to know?";
+    return "Hello! I can tell you about music videos, concert and event filming, our wedding packages and how it all works. What would you like to know?";
   }
   return `I'd love to help — I can talk about packages, pricing, add-ons or booking. For anything specific, leave your details in the contact form and we'll reply personally (${CONTACT.email}).`;
 }
@@ -97,8 +105,8 @@ export function demoAnalysis(e) {
   return {
     summary: `${e.names} enquired${e.date ? ` about ${e.date}` : ""}${e.venue ? ` at ${e.venue}` : ""}.`,
     priority: e.date ? "warm" : "cold",
-    suggested_package: "SIGNATURE (confirm after a chat)",
-    questions_to_ask: ["How many guests?", "How much of the day do you want filmed?", "Any must-have moments?"],
-    draft_reply: `Hi ${e.names},\n\nThank you so much for reaching out — we'd love to hear more about your day${e.date ? ` on ${e.date}` : ""}. Could you tell us a little about your venue, guest count and the moments that matter most to you? Then we'll confirm availability and the best package.\n\nWarmly,\nBarva Vision`,
+    suggested_package: /wedding/i.test(e.service || "") ? "SIGNATURE (confirm after a chat)" : `${e.service || "Project"} — custom quote`,
+    questions_to_ask: /wedding/i.test(e.service || "") ? ["How many guests?", "How much of the day do you want filmed?", "Any must-have moments?"] : ["What's the idea or concept?", "Where and when is the shoot?", "What do you need delivered (full video, highlights, vertical clips)?"],
+    draft_reply: `Hi ${e.names},\n\nThank you so much for reaching out — we'd love to hear more${e.date ? ` about your plans for ${e.date}` : ""}. Could you tell us a little more about the idea, the location and what you'd like delivered? Then we'll confirm availability and put together the best option for you.\n\nWarmly,\nBarva Vision`,
   };
 }

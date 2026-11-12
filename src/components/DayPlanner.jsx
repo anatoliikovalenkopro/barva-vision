@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { post } from "../api.js";
 import ModeNote from "./ModeNote.jsx";
+import { navigate } from "../router.jsx";
 
 const VENUES = ["Church or chapel", "Garden or outdoor", "Banquet hall", "Hotel or resort", "Barn or rustic venue", "Mountain or lake"];
 
@@ -69,7 +70,7 @@ export default function DayPlanner({ onPrefill }) {
             className="btn"
             onClick={() => {
               onPrefill(`Here is my draft wedding-day timeline:\n${asText()}`);
-              location.hash = "#contact";
+              navigate("/contact");
             }}
           >
             Send this plan to the studio

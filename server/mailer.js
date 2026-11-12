@@ -22,15 +22,15 @@ export async function emailOwner(enquiry) {
   if (!t || !process.env.OWNER_EMAIL) return false;
   const a = enquiry.analysis;
   const rows = [
-    ["Names", enquiry.names],
+    ["Name", enquiry.names],
     ["Email", enquiry.email],
-    ["Wedding date", enquiry.date || "—"],
+    ["Date", enquiry.date || "—"],
     ["Venue / city", enquiry.venue || "—"],
     ["Interested in", enquiry.service || "—"],
     ["Came from", enquiry.source],
   ];
   const html = `
-    <h2>New wedding enquiry — ${esc(enquiry.names)}</h2>
+    <h2>New enquiry (${esc(enquiry.service || "general")}) — ${esc(enquiry.names)}</h2>
     ${a ? `<p><b>${esc(a.priority?.toUpperCase())}</b> · ${esc(a.summary)}</p>` : ""}
     <table cellpadding="6">${rows.map(([k, v]) => `<tr><td><b>${esc(k)}</b></td><td>${esc(v)}</td></tr>`).join("")}</table>
     <p><b>Message</b><br>${esc(enquiry.message || "—").replace(/\n/g, "<br>")}</p>

@@ -3,6 +3,7 @@ import { QUIZ, recommend } from "../../shared/recommend.js";
 import { BOOKING } from "../../shared/siteData.js";
 import { post } from "../api.js";
 import ModeNote from "./ModeNote.jsx";
+import { navigate } from "../router.jsx";
 
 export default function PackageFinder({ onPrefill }) {
   const [step, setStep] = useState(0);
@@ -90,7 +91,7 @@ export default function PackageFinder({ onPrefill }) {
             onClick={() => {
               const extras = result.addons.map((a) => a.name.toLowerCase()).join(", ");
               onPrefill(`I'd like to know more about the ${result.tier} wedding film package${extras ? ` with ${extras}` : ""}.`);
-              location.hash = "#contact";
+              navigate("/contact");
             }}
           >
             Ask about this package

@@ -1,21 +1,25 @@
+import { CONTACT, PAGES } from "../../shared/siteData.js";
+import { Link } from "../router.jsx";
+
 export default function Footer() {
   return (
     <footer className="site-footer">
       <div className="wrap">
         <div className="footer-top">
-          <div className="footer-brand">
-            <span className="logo-mark">BV</span>
-            <span className="footer-name">Barva Vision</span>
+          <div className="footer-col">
+            <span className="footer-label">Say hello</span>
+            <a className="footer-big-link" href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
+            <a className="footer-small-link" href={CONTACT.instagramUrl} target="_blank" rel="noopener noreferrer">Instagram {CONTACT.instagram} ↗</a>
           </div>
           <nav className="footer-nav">
-            <a href="#home">Home</a><a href="#services">Services</a><a href="#plan">Plan</a>
-            <a href="#work">Work</a><a href="#prices">Prices</a><a href="#contact">Contact</a>
+            {PAGES.map((p) => <Link key={p.path} to={p.path}>{p.label}</Link>)}
           </nav>
         </div>
+        <div className="footer-wordmark" aria-hidden="true">BARVA VISION</div>
         <div className="footer-meta">
           <span>© 2026 BARVA VISION</span>
-          <span>WEDDING VIDEOGRAPHY · ALBERTA &amp; ACROSS CANADA</span>
-          <span>NOW BOOKING 2027</span>
+          <span>MUSIC VIDEO · LIVE SHOWS · EVENTS · WEDDINGS</span>
+          <span>{CONTACT.base.toUpperCase()} &amp; ACROSS CANADA</span>
         </div>
       </div>
     </footer>

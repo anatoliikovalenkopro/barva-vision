@@ -1,5 +1,6 @@
 import { BOOKING, PRICING } from "../../shared/siteData.js";
 import Reveal from "./Reveal.jsx";
+import { Link, contactLink } from "../router.jsx";
 
 export default function Booking() {
   const wf = PRICING.find((c) => c.id === "wedding-films");
@@ -19,7 +20,7 @@ export default function Booking() {
             <li>Only {BOOKING.totalSpots} weddings at this price — once they're gone, they're gone</li>
             <li>Dates confirmed with a quick, no-pressure chat</li>
           </ul>
-          <a className="btn" href="#contact">Reserve your date</a>
+          <Link className="btn" to={contactLink("Wedding Film")}>Reserve your date</Link>
         </Reveal>
 
         <Reveal className="poster">

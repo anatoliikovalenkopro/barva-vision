@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { post } from "../api.js";
 
-const GREETING = "Hi! I'm the Barva Vision assistant. Ask me about our wedding film packages, the 2027 launch rates, or booking your date.";
-const SUGGESTIONS = ["What are your packages?", "Are you free in 2027?", "Do you travel across Canada?"];
+const GREETING = "Hi! I'm the Barva Vision assistant. Ask me about music videos, concert and event filming, wedding packages, or booking your date.";
+const SUGGESTIONS = ["Do you shoot music videos?", "Wedding packages?", "Do you travel across Canada?"];
 
 export default function ChatWidget() {
   const [open, setOpen] = useState(false);

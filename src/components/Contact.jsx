@@ -3,16 +3,31 @@ import { CONTACT } from "../../shared/siteData.js";
 import { post } from "../api.js";
 import Reveal from "./Reveal.jsx";
 
-const EMPTY = { names: "", email: "", date: "", venue: "", service: "Wedding Film", message: "" };
+const SERVICES = [
+  "Music Video",
+  "Concert / Live Performance",
+  "Event",
+  "Wedding Film",
+  "Wedding Film + Drone",
+  "Wedding Film + Second Filmmaker",
+  "Something else",
+];
 
-export default function Contact({ prefill }) {
+const EMPTY = { names: "", email: "", date: "", venue: "", service: SERVICES[0], message: "" };
+
+export default function Contact({ prefill, about = false }) {
   const [form, setForm] = useState(EMPTY);
   const [status, setStatus] = useState("idle"); // idle | sending | sent
   const [viaMail, setViaMail] = useState(false);
   const [error, setError] = useState("");
 
   useEffect(() => {
-    if (prefill) setForm((f) => ({ ...f, message: prefill }));
+    const wanted = new URLSearchParams(location.search).get("service");
+    if (wanted && SERVICES.includes(wanted)) setForm((f) => ({ ...f, service: wanted }));
+  }, []);
+
+  useEffect(() => {
+    if (prefill) setForm((f) => ({ ...f, message: prefill, service: /wedding/i.test(prefill) ? "Wedding Film" : f.service }));
   }, [prefill]);
 
   const set = (k) => (e) => setForm({ ...form, [k]: e.target.value });
@@ -32,12 +47,23 @@ export default function Contact({ prefill }) {
   };
 
   return (
-    <section id="contact" className="section tint-blush">
+    <section id="contact" className="section contact-page">
       <div className="wrap contact-grid">
         <Reveal>
-          <div className="eyebrow"><span className="rule" />CONTACT</div>
-          <h2>Let's talk about <em>your day</em></h2>
-          <p className="lead">Tell us your date and a little about your wedding. We'll reply personally and let you know if we're available.</p>
+          {about ? (
+            <div className="about-mini">
+              <div className="eyebrow"><span className="rule" />ABOUT</div>
+              <p className="about-mini-quote">
+                <em>Barva</em> means colour.
+              </p>
+              <p className="about-mini-body">
+                I'm here to capture your moments as they really feel — so you can keep the memories and relive them again
+                and again.
+              </p>
+            </div>
+          ) : (
+            <p className="contact-intro">Prefer email or Instagram? Reach us directly — or fill in the form and we'll get back to you.</p>
+          )}
           <div className="contact-list">
             <div><span>EMAIL</span><a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a></div>
             {CONTACT.phone && (
@@ -70,24 +96,20 @@ export default function Contact({ prefill }) {
           ) : (
             <form className="form-card" onSubmit={submit}>
               <div className="form-row">
-                <label><span>YOUR NAMES</span><input value={form.names} onChange={set("names")} required placeholder="Anna & Michael" maxLength={120} /></label>
+                <label><span>YOUR NAME / ARTIST</span><input value={form.names} onChange={set("names")} required placeholder="Your name or band" maxLength={120} /></label>
                 <label><span>EMAIL</span><input type="email" value={form.email} onChange={set("email")} required placeholder="you@email.com" /></label>
               </div>
               <div className="form-row">
-                <label><span>WEDDING DATE</span><input type="date" value={form.date} onChange={set("date")} /></label>
+                <label><span>DATE</span><input type="date" value={form.date} onChange={set("date")} /></label>
                 <label><span>VENUE / CITY</span><input value={form.venue} onChange={set("venue")} placeholder="City, Province" maxLength={160} /></label>
               </div>
               <label>
                 <span>I'M INTERESTED IN</span>
                 <select value={form.service} onChange={set("service")}>
-                  <option>Wedding Film</option>
-                  <option>Wedding Film + Drone</option>
-                  <option>Wedding Film + Second Filmmaker</option>
-                  <option>Love Story Walk</option>
-                  <option>Something else</option>
+                  {SERVICES.map((s) => <option key={s}>{s}</option>)}
                 </select>
               </label>
-              <label><span>TELL US ABOUT YOUR DAY</span><textarea rows="5" value={form.message} onChange={set("message")} placeholder="Guests, style, what matters most to you…" maxLength={3000} /></label>
+              <label><span>TELL US ABOUT YOUR PROJECT</span><textarea rows="5" value={form.message} onChange={set("message")} placeholder="The song, the venue, the look you have in mind, what matters most…" maxLength={3000} /></label>
               <button className="btn btn-block" disabled={status === "sending"}>
                 {status === "sending" ? <><span className="spinner" />Sending…</> : "Send enquiry"}
               </button>

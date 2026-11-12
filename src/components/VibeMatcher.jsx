@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { post } from "../api.js";
 import ModeNote from "./ModeNote.jsx";
+import { navigate } from "../router.jsx";
 
 const EXAMPLES = [
   "Soft garden wedding at golden hour",
@@ -74,7 +75,7 @@ export default function VibeMatcher({ onPrefill }) {
               className="btn"
               onClick={() => {
                 onPrefill(`Our wedding vibe: "${vibe.mood_name}" — ${vibe.description} Palette: ${vibe.palette.map((c) => c.name).join(", ")}.`);
-                location.hash = "#contact";
+                navigate("/contact");
               }}
             >
               Use this vibe in my enquiry

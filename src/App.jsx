@@ -1,22 +1,29 @@
 import { useEffect, useState } from "react";
 import Header, { Announce } from "./components/Header.jsx";
-import Hero from "./components/Hero.jsx";
-import Booking from "./components/Booking.jsx";
-import Services from "./components/Services.jsx";
-import Plan from "./components/Plan.jsx";
-import Work from "./components/Work.jsx";
-import Process from "./components/Process.jsx";
-import Prices from "./components/Prices.jsx";
-import About from "./components/About.jsx";
-import Contact from "./components/Contact.jsx";
 import Footer from "./components/Footer.jsx";
 import ChatWidget from "./components/ChatWidget.jsx";
 import Admin from "./components/Admin.jsx";
 import { isServerMode } from "./api.js";
+import { usePath } from "./router.jsx";
+import { SERVICE_PAGES } from "./pages/servicePages.js";
+import { HomePage, ServicePage, WeddingsPage, PricesPage, ContactPage } from "./pages/Pages.jsx";
+
+const TITLES = {
+  "/": "Barva Vision — Music Video, Live Shows, Events & Weddings · Alberta",
+  "/music-videos": "Music Video — Barva Vision",
+  "/live-shows": "Live Shows & Concert Videography — Barva Vision",
+  "/events": "Event Videography — Barva Vision",
+  "/weddings": "Wedding Films — Barva Vision",
+  "/prices": "Prices — Barva Vision",
+  "/about": "About & Contact — Barva Vision",
+  "/contact": "About & Contact — Barva Vision",
+};
 
 export default function App() {
+  const path = usePath();
   const [hash, setHash] = useState(location.hash);
   const [prefill, setPrefill] = useState("");
+  const wedding = path === "/weddings";
 
   useEffect(() => {
     const onHash = () => setHash(location.hash);
@@ -24,21 +31,29 @@ export default function App() {
     return () => window.removeEventListener("hashchange", onHash);
   }, []);
 
+  useEffect(() => {
+    const theme = SERVICE_PAGES[path]?.theme;
+    const root = document.documentElement.classList;
+    root.toggle("theme-studio", !wedding);
+    for (const t of ["music", "live", "events"]) root.toggle(`theme-${t}`, theme === t);
+    root.toggle("theme-neutral", !wedding && !theme);
+    document.title = TITLES[path] || TITLES["/"];
+  }, [path, wedding]);
+
   if (hash === "#admin" && isServerMode) return <Admin />;
+
+  let page;
+  if (SERVICE_PAGES[path]) page = <ServicePage key={path} path={path} />;
+  else if (wedding) page = <WeddingsPage onPrefill={setPrefill} />;
+  else if (path === "/prices") page = <PricesPage />;
+  else if (path === "/contact" || path === "/about") page = <ContactPage prefill={prefill} />;
+  else page = <HomePage />;
 
   return (
     <>
-      <Announce />
-      <Header />
-      <Hero />
-      <Booking />
-      <Services />
-      <Plan onPrefill={setPrefill} />
-      <Work />
-      <Process />
-      <Prices />
-      <About />
-      <Contact prefill={prefill} />
+      {wedding && <Announce />}
+      <Header path={path} wedding={wedding} />
+      <main key={path}>{page}</main>
       <Footer />
       <ChatWidget />
     </>

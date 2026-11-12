@@ -1,0 +1,158 @@
+/* =====================================================================
+   MUSIC VIDEOS — black, electric pink/violet, huge uppercase, tracklist
+   ===================================================================== */
+html.theme-studio.theme-music{
+  --cream:#08070c;--ivory:#121019;--blush:#0d0b13;--sage:#0d0b12;--lav:#0d0b12;
+  --line:#25212f;--ink:#f3f1f8;--muted:#9a94ab;
+  --gold:#ff4f9a;--rose:#ff4f9a;--rose-d:#b48cff;
+}
+html.theme-studio.theme-music h1,html.theme-studio.theme-music h2{text-transform:uppercase;font-weight:800;letter-spacing:-.035em}
+html.theme-studio.theme-music h2 em{font-family:var(--display);font-style:normal;background:linear-gradient(90deg,#ff4f9a,#8b5cff);-webkit-background-clip:text;background-clip:text;color:transparent}
+html.theme-studio.theme-music .btn{background:linear-gradient(90deg,#ff4f9a,#8b5cff);border:0;color:#fff}
+html.theme-studio.theme-music .btn:hover{filter:brightness(1.12);background:linear-gradient(90deg,#ff4f9a,#8b5cff);color:#fff}
+html.theme-studio.theme-music .btn-ghost{background:transparent;border:1px solid rgba(243,241,248,.3);color:var(--ink)}
+html.theme-studio.theme-music .btn-ghost:hover{background:var(--ink);color:#08070c;filter:none}
+html.theme-studio.theme-music .masthead{background:rgba(8,7,12,.86)}
+html.theme-studio.theme-music .dnav a.active::after{background:linear-gradient(90deg,#ff4f9a,#8b5cff);height:2px}
+html.theme-studio.theme-music .cta-band{background:linear-gradient(110deg,#2a0f2a,#120c24 60%,#08070c)}
+html.theme-studio.theme-music .tab.active{background:linear-gradient(90deg,#ff4f9a,#8b5cff);border-color:transparent;color:#fff}
+
+.music-hero{padding:clamp(28px,3.5vw,48px) 0 clamp(20px,2.5vw,32px);background:radial-gradient(ellipse at 15% 10%,rgba(255,79,154,.18),transparent 50%),radial-gradient(ellipse at 90% 80%,rgba(139,92,255,.2),transparent 50%),var(--cream);overflow:hidden}
+.mh-tag{font-family:ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.24em;color:var(--muted);margin-bottom:14px}
+.mh-tag span{color:#ff4f9a;margin-right:10px}
+.mh-title{font-size:clamp(28px,3.4vw,50px);line-height:.95}
+.mh-title{margin-bottom:18px}
+.mh-title span{display:block;background:linear-gradient(90deg,#ff4f9a,#b48cff 55%,#8b5cff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.eq{display:flex;align-items:flex-end;gap:clamp(3px,.6vw,7px);height:clamp(70px,10vw,130px);margin:clamp(28px,4vw,48px) 0}
+.eq i{flex:1;height:var(--h);border-radius:3px;background:linear-gradient(0deg,#8b5cff,#ff4f9a);transform-origin:bottom;animation:eq-bounce 1.15s ease-in-out infinite alternate}
+@keyframes eq-bounce{from{transform:scaleY(.22)}to{transform:scaleY(1)}}
+.mh-row{display:flex;justify-content:space-between;align-items:flex-end;gap:28px;flex-wrap:wrap}
+.mh-row .hero-actions{margin-top:0}
+
+/* services as a tracklist */
+html.theme-studio.theme-music #services .services-grid{flex-direction:column;gap:0;counter-reset:track;border-top:1px solid var(--line)}
+html.theme-studio.theme-music #services .svc{counter-increment:track;flex:none;width:100%;min-width:0;display:grid;grid-template-columns:70px 1.1fr 1.6fr;align-items:center;gap:20px;padding:26px 8px;background:transparent;border:0;border-bottom:1px solid var(--line);border-radius:0}
+html.theme-studio.theme-music #services .svc::before{content:counter(track,decimal-leading-zero);font-family:ui-monospace,Menlo,monospace;font-size:14px;color:#ff4f9a}
+html.theme-studio.theme-music #services .svc:hover{transform:none;box-shadow:none;background:linear-gradient(90deg,rgba(255,79,154,.08),transparent)}
+html.theme-studio.theme-music #services .svc-icon{display:none}
+html.theme-studio.theme-music #services .svc h3{margin:0;font-size:clamp(20px,2.4vw,28px);text-transform:uppercase;font-weight:800}
+html.theme-studio.theme-music #services .svc p{margin:0}
+
+/* =====================================================================
+   LIVE SHOWS — gig poster: red / yellow, condensed poster type, tickets
+   ===================================================================== */
+html.theme-studio.theme-live{
+  --display:'Anton','Syne',Impact,sans-serif;
+  --cream:#0b0b0b;--ivory:#161616;--blush:#101010;--sage:#101010;--lav:#101010;
+  --line:#2a2a2a;--ink:#f7f7f7;--muted:#a3a3a3;
+  --gold:#e3141f;--rose:#e3141f;--rose-d:#e3141f;
+}
+html.theme-studio.theme-live h1,html.theme-studio.theme-live h2,html.theme-studio.theme-live h3{font-weight:400;text-transform:uppercase;letter-spacing:.01em;line-height:.95}
+html.theme-studio.theme-live h2 em{font-family:var(--display);font-style:normal;color:#e3141f}
+html.theme-studio.theme-live .brand-name{font-weight:400;letter-spacing:.04em;text-transform:uppercase}
+html.theme-studio.theme-live .btn{background:#e3141f;border-color:#e3141f;color:#fff;border-radius:4px}
+html.theme-studio.theme-live .btn:hover{background:#fff;border-color:#fff;color:#0b0b0b}
+html.theme-studio.theme-live .btn-ghost{background:transparent;border-color:#fff;color:#fff}
+html.theme-studio.theme-live .tab{border-radius:4px}
+html.theme-studio.theme-live .tab.active{background:#e3141f;border-color:#e3141f;color:#fff}
+html.theme-studio.theme-live .masthead{background:rgba(11,11,11,.9)}
+html.theme-studio.theme-live .dnav a.active::after{background:#e3141f;height:2px}
+html.theme-studio.theme-live .tier,html.theme-studio.theme-live .home-card,html.theme-studio.theme-live .empty-reel{border-radius:6px}
+html.theme-studio.theme-live .cta-band{background:#e3141f;border:0}
+html.theme-studio.theme-live .cta-band h2,html.theme-studio.theme-live .cta-band h2 em{color:#fff}
+html.theme-studio.theme-live .cta-band .btn{background:#0b0b0b;border-color:#0b0b0b;color:#fff}
+
+.live-hero{padding:clamp(48px,7vw,96px) 0;background:repeating-linear-gradient(135deg,rgba(227,20,31,.05) 0 14px,transparent 14px 28px),var(--cream);border-bottom:4px solid #e3141f}
+.live-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(32px,6vw,80px);align-items:center}
+.gig-poster{display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;padding:34px 26px 26px;background:#f7f7f7;color:#0b0b0b;transform:rotate(-2.5deg);box-shadow:16px 16px 0 #e3141f;font-family:var(--display);text-transform:uppercase;max-width:420px;width:100%;margin:0 auto}
+.gp-top{font-family:var(--sans);font-size:11px;letter-spacing:.3em;font-weight:500}
+.gp-big{font-size:clamp(110px,15vw,190px);line-height:.85;color:#e3141f;letter-spacing:-.01em}
+.gp-sub{font-size:clamp(18px,2.2vw,24px);letter-spacing:.06em}
+.gp-lines{display:flex;align-items:center;gap:14px;width:100%;justify-content:center;border-top:3px solid #0b0b0b;border-bottom:3px solid #0b0b0b;padding:10px 0;margin-top:6px;font-size:20px}
+.gp-lines b{color:#e3141f}
+.gp-foot{font-family:var(--sans);font-size:11px;letter-spacing:.22em;font-weight:500;margin-top:4px}
+.live-tag{font-family:var(--display);font-size:18px;letter-spacing:.08em;color:#e3141f;margin-bottom:14px}
+.live-copy h1{font-size:clamp(54px,8vw,116px);margin-bottom:22px}
+
+/* services as ticket stubs */
+html.theme-studio.theme-live #services .svc{position:relative;background:var(--ivory);border:2px dashed rgba(255,255,255,.3);border-radius:6px;padding:28px 26px 28px 30px}
+html.theme-studio.theme-live #services .svc::before,html.theme-studio.theme-live #services .svc::after{content:"";position:absolute;top:50%;width:22px;height:22px;margin-top:-11px;border-radius:50%;background:var(--cream)}
+html.theme-studio.theme-live #services .svc::before{left:-12px}
+html.theme-studio.theme-live #services .svc::after{right:-12px}
+html.theme-studio.theme-live #services .svc:hover{border-color:#e3141f;box-shadow:none}
+html.theme-studio.theme-live #services .svc-icon{background:#e3141f;border-radius:4px}
+html.theme-studio.theme-live #services .svc-icon svg{stroke:#fff}
+html.theme-studio.theme-live #services .svc h3{font-size:26px}
+
+/* =====================================================================
+   EVENTS — light editorial: paper, black ink, electric blue, bold cards
+   ===================================================================== */
+html.theme-studio.theme-events{
+  --display:'Space Grotesk','Jost',system-ui,sans-serif;
+  --cream:#f3f0e8;--ivory:#ffffff;--blush:#ebe7dc;--sage:#ebe7dc;--lav:#ebe7dc;--sky:#ebe7dc;
+  --line:#d8d3c6;--ink:#141414;--muted:#5d5a54;
+  --gold:#2c4bff;--rose:#2c4bff;--rose-d:#2c4bff;
+  color-scheme:light;
+}
+html.theme-studio.theme-events h1,html.theme-studio.theme-events h2,html.theme-studio.theme-events h3{font-weight:700;letter-spacing:-.035em}
+html.theme-studio.theme-events h1 em,html.theme-studio.theme-events h2 em{font-family:var(--display);font-style:normal;color:#2c4bff;font-weight:700}
+html.theme-studio.theme-events ::selection{background:#2c4bff;color:#fff}
+html.theme-studio.theme-events .masthead{background:rgba(243,240,232,.9)}
+html.theme-studio.theme-events .burger{border-color:#141414}
+html.theme-studio.theme-events .btn{background:#141414;border-color:#141414;color:#fff;border-radius:10px}
+html.theme-studio.theme-events .btn:hover{background:#2c4bff;border-color:#2c4bff;color:#fff}
+html.theme-studio.theme-events .btn-ghost{background:transparent;color:#141414;border:1.5px solid #141414}
+html.theme-studio.theme-events .btn-ghost:hover{background:#141414;color:#fff}
+html.theme-studio.theme-events .tab{border-color:#141414;border-radius:10px}
+html.theme-studio.theme-events .tab.active{background:#141414;color:#fff}
+html.theme-studio.theme-events .dnav a.active::after{background:#2c4bff;height:2px}
+html.theme-studio.theme-events .tier{border:2px solid #141414;border-radius:14px;box-shadow:6px 6px 0 #141414}
+html.theme-studio.theme-events .tier-desc{color:#141414}
+html.theme-studio.theme-events .tier-feats li::before{background:#2c4bff}
+html.theme-studio.theme-events .empty-reel{background:#fff;border:2px solid #141414;border-radius:14px}
+html.theme-studio.theme-events .empty-reel .fplay{background:#2c4bff}
+html.theme-studio.theme-events .empty-reel .fplay::after{border-left-color:#fff}
+html.theme-studio.theme-events .cta-band{background:#2c4bff;border:0}
+html.theme-studio.theme-events .cta-band h2,html.theme-studio.theme-events .cta-band h2 em{color:#fff}
+html.theme-studio.theme-events .cta-band .btn{background:#fff;border-color:#fff;color:#141414}
+html.theme-studio.theme-events .chat-fab{background:#141414;color:#fff}
+
+.events-hero{padding:clamp(48px,7vw,96px) 0;background:var(--cream);border-bottom:2px solid #141414}
+.events-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,72px);align-items:center}
+.ev-tag{display:inline-block;font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:.12em;padding:6px 12px;border:2px solid #141414;border-radius:999px;margin-bottom:22px}
+.events-hero h1{font-size:clamp(46px,6.4vw,88px);line-height:.98;margin-bottom:22px}
+.ev-board{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.ev-tile{position:relative;aspect-ratio:1;border:2px solid #141414;border-radius:14px;display:flex;flex-direction:column;justify-content:flex-end;padding:12px;overflow:hidden;box-shadow:4px 4px 0 #141414}
+.ev-tile b{position:relative;z-index:1;font-family:var(--display);font-size:clamp(10px,1.1vw,13px);letter-spacing:.1em}
+.ev-tile:nth-child(odd){transform:rotate(-1.5deg)}
+.ev-tile:nth-child(even){transform:rotate(1.5deg) translateY(10px)}
+.t-blue{background:#2c4bff;color:#fff}.t-ink{background:#141414;color:#fff}.t-sun{background:#ffd23f}
+.t-pink{background:#ff8fb1}.t-paper{background:#fff}.t-green{background:#7fdc9a}
+.ev-shape{position:absolute;top:16%;left:50%;transform:translateX(-50%);width:52%;aspect-ratio:1}
+.ev-shape.circle{border-radius:50%;background:#ffd23f}
+.ev-shape.arch{border-radius:999px 999px 0 0;background:#2c4bff}
+.ev-shape.burst{background:#141414;clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)}
+.ev-shape.dots{background:radial-gradient(#141414 28%,transparent 30%) 0 0/33% 33%}
+.ev-shape.lines{background:repeating-linear-gradient(0deg,#2c4bff 0 6px,transparent 6px 14px)}
+.ev-shape.square{background:#141414;border-radius:8px;transform:translateX(-50%) rotate(12deg)}
+
+/* services as bold bordered cards */
+html.theme-studio.theme-events #services .svc{background:#fff;border:2px solid #141414;border-radius:14px;box-shadow:6px 6px 0 #141414}
+html.theme-studio.theme-events #services .svc:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 #2c4bff;border-color:#141414}
+html.theme-studio.theme-events #services .svc-icon,html.theme-studio.theme-events #services .svc:nth-child(n) .svc-icon{background:#2c4bff;border-radius:12px}
+html.theme-studio.theme-events #services .svc-icon svg{stroke:#fff}
+html.theme-studio.theme-events #services .svc p{color:#5d5a54}
+
+@media(max-width:900px){
+  .live-grid,.events-grid{grid-template-columns:1fr}
+  html.theme-studio.theme-music #services .svc{grid-template-columns:44px 1fr;row-gap:6px}
+  html.theme-studio.theme-music #services .svc p{grid-column:2}
+}
+@media(prefers-reduced-motion:reduce){.eq i{animation:none}}
+
+/* music page: get to the videos fast */
+html.theme-studio.theme-music .mh-title span{display:inline}
+html.theme-studio.theme-music #work{padding-top:clamp(20px,3vw,40px)}
+html.theme-studio.theme-music #work .section-head{margin-bottom:24px}
+html.theme-studio.theme-music #work h2{font-size:clamp(24px,2.6vw,36px)}
+html.theme-studio.theme-music .film-grid{grid-template-columns:repeat(auto-fill,minmax(340px,1fr))}

@@ -7,6 +7,8 @@
   --gold:#b48a63;
   --serif:'Cormorant Garamond',Georgia,serif;
   --sans:'Jost',system-ui,sans-serif;
+  --display:'Syne','Jost',system-ui,sans-serif;
+  --head:var(--serif);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -59,10 +61,14 @@ h3{font-size:24px}
 .burger{display:none;flex-direction:column;gap:5px;background:transparent;border:1px solid var(--line);border-radius:50%;width:42px;height:42px;align-items:center;justify-content:center;cursor:pointer}
 .burger span{width:16px;height:1.5px;background:var(--ink);display:block}
 
-.menu-overlay{position:fixed;inset:0;z-index:200;background:rgba(253,248,243,.98);display:none;align-items:center;justify-content:center}
+.menu-overlay{position:fixed;inset:0;z-index:200;background:var(--cream);display:none;flex-direction:column;padding:18px 24px 28px;overflow-y:auto}
 .menu-overlay.open{display:flex}
-.menu-links{display:flex;flex-direction:column;gap:22px;text-align:center;font-family:var(--serif);font-size:42px}
-.menu-close-btn{position:absolute;top:20px;right:22px;background:transparent;border:1px solid var(--line);border-radius:999px;font-size:11px;letter-spacing:.2em;padding:10px 16px;cursor:pointer}
+.menu-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+.menu-links{display:flex;flex-direction:column;flex:1;justify-content:center;font-family:var(--head);font-size:30px;font-weight:500;margin-bottom:24px}
+.menu-links a{display:flex;align-items:baseline;gap:16px;padding:11px 0;border-bottom:1px solid var(--line)}
+.menu-links a small{font-family:var(--sans);font-size:11px;letter-spacing:.2em;color:var(--gold);font-weight:500}
+.menu-links a.active{color:var(--rose-d)}
+.menu-close-btn{background:transparent;border:1px solid var(--line);border-radius:999px;font-size:11px;letter-spacing:.2em;padding:10px 16px;cursor:pointer}
 
 /* hero */
 .hero{padding:clamp(40px,7vw,88px) 0 clamp(56px,8vw,100px);background:radial-gradient(ellipse at 85% 20%,var(--lav),transparent 55%),radial-gradient(ellipse at 5% 90%,var(--blush),transparent 55%),var(--cream)}
@@ -225,9 +231,11 @@ h3{font-size:24px}
 html.js .reveal{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s ease}
 html.js .reveal.in{opacity:1;transform:none}
 
-@media(max-width:900px){
+@media(max-width:720px){
   .dnav,.nav-cta{display:none}
   .burger{display:flex}
+}
+@media(max-width:900px){
   .hero-grid,.booking-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
   .hero-visual{order:-1}
   .arch{width:min(100%,340px)}

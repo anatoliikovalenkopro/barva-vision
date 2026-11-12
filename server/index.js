@@ -103,9 +103,9 @@ app.post("/api/chat", aiLimit, async (req, res) => {
         const clean = cleanEnquiry({
           names: lead.names,
           email: lead.email,
-          date: lead.wedding_date,
+          date: lead.date,
           venue: lead.venue,
-          service: "Wedding Film",
+          service: lead.service || "Something else",
           message: lead.notes,
         });
         processEnquiry(clean, "chat assistant");

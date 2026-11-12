@@ -1,15 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BOOKING } from "../../shared/siteData.js";
-import { useActiveSection } from "../hooks.js";
+import { Link, contactLink } from "../router.jsx";
+import Icon from "./Icon.jsx";
 
-const LINKS = [
-  ["home", "Home"],
-  ["services", "Services"],
-  ["plan", "Plan your film"],
-  ["work", "Work"],
-  ["prices", "Prices"],
-  ["about", "About"],
-  ["contact", "Contact"],
+export const SERVICE_LINKS = [
+  { path: "/music-videos", label: "Music Video", icon: "note" },
+  { path: "/live-shows", label: "Live Shows", icon: "live" },
+  { path: "/weddings", label: "Weddings", icon: "rings" },
+  { path: "/events", label: "Events", icon: "clapper" },
+];
+
+const NAV = [
+  { path: "/", label: "Home" },
+  { path: "/#work", label: "Work" },
+  { label: "Services", children: SERVICE_LINKS },
+  { path: "/prices", label: "Pricing" },
+  { path: "/contact", label: "About & Contact" },
 ];
 
 export function Announce() {
@@ -22,38 +28,70 @@ export function Announce() {
   );
 }
 
-export default function Header() {
+export default function Header({ path, wedding }) {
   const [open, setOpen] = useState(false);
-  const active = useActiveSection(LINKS.map(([id]) => id));
+  const [drop, setDrop] = useState(false);
+
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [open]);
+
+  useEffect(() => setDrop(false), [path]);
+
+  const isServices = SERVICE_LINKS.some((s) => s.path === path);
 
   return (
     <>
       <header className="masthead" id="nav">
-        <a href="#home" className="brand">
-          <span className="logo-mark">BV</span>
+        <Link to="/" className="brand">
           <span className="brand-text">
             <span className="brand-name">Barva Vision</span>
-            <span className="brand-tag">WEDDING FILMS · ALBERTA</span>
+            <span className="brand-tag">{wedding ? "Wedding films" : "Video production"}</span>
           </span>
-        </a>
+        </Link>
+        <span className="brand-divider" aria-hidden="true" />
         <nav className="dnav">
-          {LINKS.map(([id, label]) => (
-            <a key={id} href={`#${id}`} className={active === id ? "active" : ""}>{label}</a>
-          ))}
+          {NAV.map((n) =>
+            n.children ? (
+              <div className={`dnav-drop${drop ? " open" : ""}`} key={n.label} onMouseLeave={() => setDrop(false)}>
+                <button className={isServices ? "active" : ""} onClick={() => setDrop(!drop)} onMouseEnter={() => setDrop(true)} aria-expanded={drop}>
+                  {n.label} <span className="chev">⌄</span>
+                </button>
+                <div className="drop-panel">
+                  {n.children.map((c) => (
+                    <Link key={c.path} to={c.path} className={path === c.path ? "active" : ""}>
+                      <Icon name={c.icon} />{c.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <Link key={n.label} to={n.path} className={path === n.path || (n.path === "/contact" && path === "/about") ? "active" : ""}>{n.label}</Link>
+            ),
+          )}
         </nav>
-        <a className="btn btn-sm nav-cta" href="#contact">Check your date</a>
+        <Link className="nav-cta" to={contactLink(wedding ? "Wedding Film" : "")}>
+          {wedding ? "Check your date" : "Get a quote"} <Icon name="arrowUR" />
+        </Link>
         <button className="burger" aria-label="Open menu" onClick={() => setOpen(true)}>
           <span /><span /><span />
         </button>
       </header>
 
-      <div className={`menu-overlay${open ? " open" : ""}`}>
-        <div className="menu-links">
-          {LINKS.map(([id, label]) => (
-            <a key={id} href={`#${id}`} onClick={() => setOpen(false)}>{label}</a>
-          ))}
+      <div className={`menu-overlay${open ? " open" : ""}`} aria-hidden={!open}>
+        <div className="menu-top">
+          <span className="brand-name">Barva Vision</span>
+          <button className="menu-close-btn" onClick={() => setOpen(false)}>CLOSE ✕</button>
         </div>
-        <button className="menu-close-btn" onClick={() => setOpen(false)}>CLOSE ✕</button>
+        <nav className="menu-links">
+          {[NAV[0], NAV[1], ...SERVICE_LINKS, NAV[3], NAV[4]].map((p, i) => (
+            <Link key={p.label} to={p.path} className={path === p.path ? "active" : ""} onClick={() => setOpen(false)}>
+              <small>{String(i + 1).padStart(2, "0")}</small>{p.label}
+            </Link>
+          ))}
+        </nav>
+        <Link className="btn btn-block" to={contactLink("")} onClick={() => setOpen(false)}>Get a quote</Link>
       </div>
     </>
   );
