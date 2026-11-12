@@ -1,4 +1,6 @@
 const PATHS = {
+  movie: <><circle cx="7" cy="6" r="2.6" /><circle cx="13" cy="6" r="2.6" /><rect x="3" y="10" width="13" height="9" rx="1.5" /><path d="m16 13 5-3v9l-5-3" /></>,
+  calendar: <><rect x="3" y="5" width="18" height="16" rx="2" /><path d="M3 10h18M8 3v4M16 3v4M7 14h2M11 14h2M15 14h2M7 17h2M11 17h2" /></>,
   live: <><circle cx="12" cy="12" r="2" /><path d="M8.5 15.5a5 5 0 0 1 0-7M15.5 8.5a5 5 0 0 1 0 7M5.6 18.4a9 9 0 0 1 0-12.8M18.4 5.6a9 9 0 0 1 0 12.8M12 14v7" /></>,
   rings: <><circle cx="9" cy="14" r="5.5" /><circle cx="15" cy="14" r="5.5" /><path d="M10.5 5.5 12 3l1.5 2.5" /></>,
   clapper: <><rect x="3" y="9" width="18" height="12" rx="1.5" /><path d="M3 9 5 4l16 0-2 5M8 4l-2 5M13 4l-2 5M18 4l-2 5M12 13v4" /></>,
