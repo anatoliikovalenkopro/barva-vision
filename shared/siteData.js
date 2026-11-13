@@ -48,6 +48,7 @@ export const FEATURED = [
 export const PAGES = [
   { path: "/", label: "Home" },
   { path: "/work", label: "Work" },
+  { path: "/services", label: "Services" },
   { path: "/music-videos", label: "Music Video" },
   { path: "/live-shows", label: "Live Shows" },
   { path: "/events", label: "Events" },

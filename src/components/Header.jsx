@@ -55,10 +55,11 @@ export default function Header({ path, wedding }) {
           {NAV.map((n) =>
             n.children ? (
               <div className={`dnav-drop${drop ? " open" : ""}`} key={n.label} onMouseLeave={() => setDrop(false)}>
-                <button className={isServices ? "active" : ""} onClick={() => setDrop(!drop)} onMouseEnter={() => setDrop(true)} aria-expanded={drop}>
+                <Link to="/services" className={`dnav-drop-link${isServices || path === "/services" ? " active" : ""}`} onMouseEnter={() => setDrop(true)} onFocus={() => setDrop(true)}>
                   {n.label} <span className="chev">⌄</span>
-                </button>
+                </Link>
                 <div className="drop-panel">
+                  <Link to="/services" className={path === "/services" ? "active" : ""}><Icon name="spark" />All services</Link>
                   {n.children.map((c) => (
                     <Link key={c.path} to={c.path} className={path === c.path ? "active" : ""}>
                       <Icon name={c.icon} />{c.label}
@@ -85,7 +86,7 @@ export default function Header({ path, wedding }) {
           <button className="menu-close-btn" onClick={() => setOpen(false)}>CLOSE ✕</button>
         </div>
         <nav className="menu-links">
-          {[NAV[0], NAV[1], ...SERVICE_LINKS, NAV[3], NAV[4]].map((p, i) => (
+          {[NAV[0], NAV[1], { path: "/services", label: "Services" }, ...SERVICE_LINKS, NAV[3], NAV[4]].map((p, i) => (
             <Link key={p.label} to={p.path} className={path === p.path ? "active" : ""} onClick={() => setOpen(false)}>
               <small>{String(i + 1).padStart(2, "0")}</small>{p.label}
             </Link>

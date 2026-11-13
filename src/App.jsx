@@ -8,6 +8,7 @@ import { usePath } from "./router.jsx";
 import { SERVICE_PAGES } from "./pages/servicePages.js";
 import { HomePage, ServicePage, WeddingsPage, PricesPage, ContactPage } from "./pages/Pages.jsx";
 import WorkPage from "./pages/WorkPage.jsx";
+import ServicesPage from "./pages/ServicesPage.jsx";
 
 const TITLES = {
   "/": "Barva Vision — Video Production Company | Alberta & Canada",
@@ -17,6 +18,7 @@ const TITLES = {
   "/weddings": "Wedding Films — Barva Vision",
   "/prices": "Prices — Barva Vision",
   "/work": "Work — Barva Vision",
+  "/services": "Services — Barva Vision",
   "/about": "About & Contact — Barva Vision",
   "/contact": "About & Contact — Barva Vision",
 };
@@ -50,6 +52,7 @@ export default function App() {
   else if (wedding) page = <WeddingsPage onPrefill={setPrefill} />;
   else if (path === "/prices") page = <PricesPage />;
   else if (path === "/work") page = <WorkPage />;
+  else if (path === "/services") page = <ServicesPage />;
   else if (path === "/contact" || path === "/about") page = <ContactPage prefill={prefill} />;
   else page = <HomePage />;
 

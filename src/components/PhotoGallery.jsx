@@ -59,7 +59,34 @@ export default function PhotoGallery({ photos, eyebrow = "PHOTOGRAPHY", title, e
     window.addEventListener("resize", updateEdges);
     return () => window.removeEventListener("resize", updateEdges);
   }, []);
-  const slide = (dir) => track.current?.scrollBy({ left: dir * track.current.clientWidth * 0.8, behavior: "smooth" });
+  // Endless: past the last photo it jumps back to the first (and the other way round).
+  const slide = (dir) => {
+    const el = track.current;
+    if (!el) return;
+    const max = el.scrollWidth - el.clientWidth;
+    if (dir > 0 && el.scrollLeft >= max - 8) el.scrollTo({ left: 0, behavior: "smooth" });
+    else if (dir < 0 && el.scrollLeft <= 8) el.scrollTo({ left: max, behavior: "smooth" });
+    else el.scrollBy({ left: dir * el.clientWidth * 0.8, behavior: "smooth" });
+  };
+
+  // Slides on its own every few seconds while visible; pauses while someone hovers or touches it.
+  const paused = useRef(false);
+  const visible = useRef(false);
+  useEffect(() => {
+    const el = track.current;
+    if (!el || window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) return undefined;
+    const io = new IntersectionObserver(([e]) => { visible.current = e.isIntersecting; }, { threshold: 0.4 });
+    io.observe(el);
+    const timer = setInterval(() => {
+      if (visible.current && !paused.current && index === null && !document.hidden) slide(1);
+    }, 4500);
+    return () => { io.disconnect(); clearInterval(timer); };
+  }, [index]);
+  const hold = () => { paused.current = true; };
+  const release = () => { paused.current = false; };
+  let resumeTimer;
+  const touchHold = () => { paused.current = true; clearTimeout(resumeTimer); };
+  const touchRelease = () => { clearTimeout(resumeTimer); resumeTimer = setTimeout(release, 6000); };
   const price = PRICING.find((c) => c.id === "photography")?.tiers[0];
 
   return (
@@ -73,7 +100,7 @@ export default function PhotoGallery({ photos, eyebrow = "PHOTOGRAPHY", title, e
           </Reveal>
         </div>
         <div className={`pg-viewport${edge.start ? " at-start" : ""}${edge.end ? " at-end" : ""}`}>
-        <div className="pg-track" ref={track} onScroll={updateEdges}>
+        <div className="pg-track" ref={track} onScroll={updateEdges} onMouseEnter={hold} onMouseLeave={release} onTouchStart={touchHold} onTouchEnd={touchRelease}>
           {photos.map((p, i) => (
             <button key={p.src} className={`pg-item${p.wide ? " wide" : ""}`} onClick={() => setIndex(i)} aria-label={`Open photo ${i + 1}`}>
               <img src={p.sm} alt={alt} loading="lazy" width={p.wide ? 760 : 506} height={p.wide ? 506 : 760} />
@@ -84,12 +111,12 @@ export default function PhotoGallery({ photos, eyebrow = "PHOTOGRAPHY", title, e
         <div className="pg-bar">
           <span className="pg-count">
             {edge.first === edge.last ? edge.first : `${edge.first}–${edge.last}`} of {photos.length}
-            {!edge.end && <em className="pg-swipe"> · swipe →</em>}
+            <em className="pg-swipe"> · swipe →</em>
           </span>
           <span className="pg-progress"><i style={{ width: `${Math.max(8, edge.progress * 100)}%` }} /></span>
           <span className="pg-arrows">
-            <button onClick={() => slide(-1)} disabled={edge.start} aria-label="Previous photos">‹</button>
-            <button onClick={() => slide(1)} disabled={edge.end} aria-label="Next photos">›</button>
+            <button onClick={() => slide(-1)} aria-label="Previous photos">‹</button>
+            <button onClick={() => slide(1)} aria-label="Next photos">›</button>
           </span>
         </div>
         {showPrice && price && (
