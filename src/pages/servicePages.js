@@ -10,7 +10,8 @@ export const SERVICE_PAGES = {
     priceId: "music-videos",
     service: "Music Video",
     cat: "Music Video",
-    photos: { key: "studio", title: "In the", em: "studio", lead: "Behind the scenes and artist portraits from recording sessions." },
+    photos: { key: "studio", title: "In the", em: "studio", lead: "Behind the scenes from recording sessions." },
+    morePhotos: { key: "portraits", title: "Artist", em: "portraits", lead: "Portraits for press, covers and socials." },
   },
   "/live-shows": {
     theme: "live",

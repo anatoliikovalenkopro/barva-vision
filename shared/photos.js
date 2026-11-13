@@ -94,22 +94,39 @@ export const PHOTOS = {
       "wide": false
     }
   ],
+  "portraits": [
+    {
+      "src": "/photos/portraits/dsc05252.jpg",
+      "sm": "/photos/portraits/sm/dsc05252.jpg",
+      "wide": false
+    },
+    {
+      "src": "/photos/portraits/dsc05253.jpg",
+      "sm": "/photos/portraits/sm/dsc05253.jpg",
+      "wide": false
+    },
+    {
+      "src": "/photos/portraits/dsc05285.jpg",
+      "sm": "/photos/portraits/sm/dsc05285.jpg",
+      "wide": false
+    },
+    {
+      "src": "/photos/portraits/dsc08964.jpg",
+      "sm": "/photos/portraits/sm/dsc08964.jpg",
+      "wide": true
+    },
+    {
+      "src": "/photos/portraits/dsc08901.jpg",
+      "sm": "/photos/portraits/sm/dsc08901.jpg",
+      "wide": false
+    },
+    {
+      "src": "/photos/portraits/dsc08875.jpg",
+      "sm": "/photos/portraits/sm/dsc08875.jpg",
+      "wide": false
+    }
+  ],
   "studio": [
-    {
-      "src": "/photos/studio/dsc05252.jpg",
-      "sm": "/photos/studio/sm/dsc05252.jpg",
-      "wide": false
-    },
-    {
-      "src": "/photos/studio/dsc05253.jpg",
-      "sm": "/photos/studio/sm/dsc05253.jpg",
-      "wide": false
-    },
-    {
-      "src": "/photos/studio/dsc05285.jpg",
-      "sm": "/photos/studio/sm/dsc05285.jpg",
-      "wide": false
-    },
     {
       "src": "/photos/studio/dsc09405.jpg",
       "sm": "/photos/studio/sm/dsc09405.jpg",
@@ -156,23 +173,8 @@ export const PHOTOS = {
       "wide": false
     },
     {
-      "src": "/photos/studio/dsc08964.jpg",
-      "sm": "/photos/studio/sm/dsc08964.jpg",
-      "wide": true
-    },
-    {
-      "src": "/photos/studio/dsc08901.jpg",
-      "sm": "/photos/studio/sm/dsc08901.jpg",
-      "wide": false
-    },
-    {
       "src": "/photos/studio/dsc08896.jpg",
       "sm": "/photos/studio/sm/dsc08896.jpg",
-      "wide": false
-    },
-    {
-      "src": "/photos/studio/dsc08875.jpg",
-      "sm": "/photos/studio/sm/dsc08875.jpg",
       "wide": false
     },
     {

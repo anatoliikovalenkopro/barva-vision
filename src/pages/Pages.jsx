@@ -87,7 +87,10 @@ export function ServicePage({ path }) {
       {(FILMS.some((f) => f.cat === p.cat) || !hasPhotos) && (
         <Work cat={p.cat} tint="tint-sage" title="Recent" em="work" reelName={`${p.eyebrow.toLowerCase()} reel`} service={p.service} />
       )}
-      {hasPhotos && !p.photos.first && <PhotoGallery photos={PHOTOS[p.photos.key]} title={p.photos.title} em={p.photos.em} lead={p.photos.lead} />}
+      {hasPhotos && !p.photos.first && <PhotoGallery photos={PHOTOS[p.photos.key]} title={p.photos.title} em={p.photos.em} lead={p.photos.lead} showPrice={!p.morePhotos} />}
+      {p.morePhotos && PHOTOS[p.morePhotos.key]?.length > 0 && (
+        <PhotoGallery photos={PHOTOS[p.morePhotos.key]} id={p.morePhotos.key} title={p.morePhotos.title} em={p.morePhotos.em} lead={p.morePhotos.lead} />
+      )}
       <Process />
       <Prices ids={[p.priceId]} title="Pricing" em="" lead="Starting price below — we confirm the final quote after a quick chat." />
       <CtaBand service={p.service} />
