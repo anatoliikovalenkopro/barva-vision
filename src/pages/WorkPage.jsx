@@ -12,7 +12,7 @@ const GROUPS = [
   { id: "music", label: "Music Video", type: "video", cat: "Music Video", title: "Music", em: "videos" },
   { id: "live", label: "Live Shows", type: "photo", key: "live", title: "Live", em: "shows", lead: "Concert photography from recent shows." },
   { id: "studio", label: "Studio Sessions", type: "photo", key: "studio", title: "Studio", em: "sessions", lead: "Recording sessions and behind the scenes." },
-  { id: "portraits", label: "Portraits", type: "photo", key: "portraits", title: "Artist", em: "portraits", lead: "Portraits for press, covers and socials." },
+  { id: "portraits", label: "Portraits", type: "photo", key: "portraits", title: "", em: "Portraits", lead: "Portraits for press, covers and socials." },
   { id: "event-photos", label: "Event Photos", type: "photo", key: "events", title: "Event", em: "photos" },
   { id: "wedding-photos", label: "Wedding Photos", type: "photo", key: "weddings", title: "Wedding", em: "photos" },
   { id: "concert-video", label: "Concert Films", type: "video", cat: "Concert", title: "Concert", em: "films" },
