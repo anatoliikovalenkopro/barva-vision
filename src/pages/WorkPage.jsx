@@ -12,6 +12,8 @@ const GROUPS = [
   { id: "music", label: "Music Video", type: "video", cat: "Music Video", title: "Music", em: "videos" },
   { id: "live", label: "Live Shows", type: "photo", key: "live", title: "Live", em: "shows", lead: "Concert photography from recent shows." },
   { id: "studio", label: "Studio & Portraits", type: "photo", key: "studio", title: "Studio &", em: "portraits", lead: "Recording sessions, behind the scenes and artist portraits." },
+  { id: "event-photos", label: "Event Photos", type: "photo", key: "events", title: "Event", em: "photos" },
+  { id: "wedding-photos", label: "Wedding Photos", type: "photo", key: "weddings", title: "Wedding", em: "photos" },
   { id: "concert-video", label: "Concert Films", type: "video", cat: "Concert", title: "Concert", em: "films" },
   { id: "events", label: "Events", type: "video", cat: "Event", title: "Event", em: "films" },
   { id: "weddings", label: "Weddings", type: "video", cat: "Wedding Film", title: "Wedding", em: "films" },

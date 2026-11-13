@@ -77,16 +77,17 @@ export function HomePage() {
 
 export function ServicePage({ path }) {
   const p = SERVICE_PAGES[path];
+  const hasPhotos = (PHOTOS[p.photos?.key] || []).length > 0;
   const Hero = { music: MusicHero, live: LiveHero, events: EventsHero }[p.theme];
   return (
     <>
       <Hero {...p} />
-      {p.photos?.first && <PhotoGallery photos={PHOTOS[p.photos.key]} title={p.photos.title} em={p.photos.em} lead={p.photos.lead} />}
+      {hasPhotos && p.photos.first && <PhotoGallery photos={PHOTOS[p.photos.key]} title={p.photos.title} em={p.photos.em} lead={p.photos.lead} />}
       {p.kinds && <Services items={p.kinds} eyebrow={p.eyebrow} title={p.kindsTitle} em={p.kindsEm} />}
-      {(FILMS.some((f) => f.cat === p.cat) || !p.photos) && (
+      {(FILMS.some((f) => f.cat === p.cat) || !hasPhotos) && (
         <Work cat={p.cat} tint="tint-sage" title="Recent" em="work" reelName={`${p.eyebrow.toLowerCase()} reel`} service={p.service} />
       )}
-      {p.photos && !p.photos.first && <PhotoGallery photos={PHOTOS[p.photos.key]} title={p.photos.title} em={p.photos.em} lead={p.photos.lead} />}
+      {hasPhotos && !p.photos.first && <PhotoGallery photos={PHOTOS[p.photos.key]} title={p.photos.title} em={p.photos.em} lead={p.photos.lead} />}
       <Process />
       <Prices ids={[p.priceId]} title="Pricing" em="" lead="Starting price below — we confirm the final quote after a quick chat." />
       <CtaBand service={p.service} />
@@ -106,6 +107,9 @@ export function WeddingsPage({ onPrefill }) {
         lead="From the first look to the last dance — wedding films made with care, colour and a lot of heart."
       />
       <Plan onPrefill={onPrefill} />
+      {PHOTOS.weddings?.length > 0 && (
+        <PhotoGallery photos={PHOTOS.weddings} id="photos" title="Wedding" em="moments" lead="Photos from weddings we have filmed and photographed." />
+      )}
       <Work cat="Wedding Film" title="Stories we've" em="filmed" reelName="wedding reel" service="Wedding Film" />
       <Process steps={WEDDING_STEPS} />
       <Prices

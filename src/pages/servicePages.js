@@ -41,6 +41,7 @@ export const SERVICE_PAGES = {
     lead: "Launches, festivals, private parties and corporate nights — told as a short cinematic film you'll actually want to share.",
     priceId: "events",
     service: "Event",
+    photos: { key: "events", first: true, title: "Event", em: "photos", lead: "Launches, parties and celebrations we have filmed and photographed." },
     cat: "Event",
     kindsTitle: "Events we",
     kindsEm: "film",

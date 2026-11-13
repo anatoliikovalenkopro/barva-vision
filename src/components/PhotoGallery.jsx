@@ -37,11 +37,22 @@ function PhotoViewer({ photos, index, setIndex }) {
 export default function PhotoGallery({ photos, eyebrow = "PHOTOGRAPHY", title, em, lead, alt = "Photo by Barva Vision", id = "photos", showPrice = true, className = "" }) {
   const [index, setIndex] = useState(null);
   const track = useRef(null);
-  const [edge, setEdge] = useState({ start: true, end: false });
+  const [edge, setEdge] = useState({ start: true, end: false, progress: 0, first: 1, last: 1 });
   const updateEdges = () => {
     const el = track.current;
     if (!el) return;
-    setEdge({ start: el.scrollLeft < 8, end: el.scrollLeft + el.clientWidth > el.scrollWidth - 8 });
+    const max = el.scrollWidth - el.clientWidth;
+    const items = [...el.children];
+    const visible = items
+      .map((c, i) => ({ i, mid: c.offsetLeft - el.offsetLeft + c.offsetWidth / 2 }))
+      .filter((c) => c.mid >= el.scrollLeft && c.mid <= el.scrollLeft + el.clientWidth);
+    setEdge({
+      start: el.scrollLeft < 8,
+      end: el.scrollLeft > max - 8,
+      progress: max > 0 ? el.scrollLeft / max : 1,
+      first: visible.length ? visible[0].i + 1 : 1,
+      last: visible.length ? visible[visible.length - 1].i + 1 : 1,
+    });
   };
   useEffect(() => {
     updateEdges();
@@ -60,17 +71,26 @@ export default function PhotoGallery({ photos, eyebrow = "PHOTOGRAPHY", title, e
             <h2>{title} <em>{em}</em></h2>
             {lead && <p className="lead">{lead}</p>}
           </Reveal>
-          <div className="pg-arrows">
-            <button onClick={() => slide(-1)} disabled={edge.start} aria-label="Previous photos">‹</button>
-            <button onClick={() => slide(1)} disabled={edge.end} aria-label="Next photos">›</button>
-          </div>
         </div>
+        <div className={`pg-viewport${edge.start ? " at-start" : ""}${edge.end ? " at-end" : ""}`}>
         <div className="pg-track" ref={track} onScroll={updateEdges}>
           {photos.map((p, i) => (
             <button key={p.src} className={`pg-item${p.wide ? " wide" : ""}`} onClick={() => setIndex(i)} aria-label={`Open photo ${i + 1}`}>
               <img src={p.sm} alt={alt} loading="lazy" width={p.wide ? 760 : 506} height={p.wide ? 506 : 760} />
             </button>
           ))}
+        </div>
+        </div>
+        <div className="pg-bar">
+          <span className="pg-count">
+            {edge.first === edge.last ? edge.first : `${edge.first}–${edge.last}`} of {photos.length}
+            {!edge.end && <em className="pg-swipe"> · swipe →</em>}
+          </span>
+          <span className="pg-progress"><i style={{ width: `${Math.max(8, edge.progress * 100)}%` }} /></span>
+          <span className="pg-arrows">
+            <button onClick={() => slide(-1)} disabled={edge.start} aria-label="Previous photos">‹</button>
+            <button onClick={() => slide(1)} disabled={edge.end} aria-label="Next photos">›</button>
+          </span>
         </div>
         {showPrice && price && (
           <div className="pg-price">
