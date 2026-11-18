@@ -36,7 +36,7 @@ export default function FeaturedWork() {
           <Link to="/work" className="fw-all">View all projects <span>→</span></Link>
         </div>
         <div className="fw-grid">
-          {FILMS.slice(0, 6).map((f) => (
+          {FILMS.slice(0, 3).map((f) => (
             <button key={f.id} className="fw-card" onClick={() => setPlaying(f)} aria-label={`Play ${f.artist} — ${f.song}`}>
               <img src={thumb(f.id)} alt="" loading="lazy" />
               <span className="fw-shade" />
