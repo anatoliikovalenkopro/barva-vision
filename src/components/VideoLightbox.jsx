@@ -22,13 +22,19 @@ export default function VideoLightbox({ film, onClose }) {
             <div className="lightbox-title">{film.artist} — {film.song}</div>
             <div className="lightbox-meta">{film.cat.toUpperCase()}</div>
           </div>
-          <button className="close-btn" onClick={onClose}>CLOSE ✕</button>
+          <div className="lightbox-actions">
+            <a className="yt-btn" href={`https://www.youtube.com/watch?v=${film.id}`} target="_blank" rel="noopener noreferrer">
+              Watch on YouTube <span aria-hidden="true">↗</span>
+            </a>
+            <button className="close-btn" onClick={onClose}>CLOSE ✕</button>
+          </div>
         </div>
         <div className="lb-video-wrap">
           <iframe
             title={`${film.artist} — ${film.song}`}
-            src={`https://www.youtube-nocookie.com/embed/${film.id}?autoplay=1&rel=0&modestbranding=1`}
-            allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+            src={`https://www.youtube.com/embed/${film.id}?autoplay=1&rel=0&playsinline=1`}
+            allow="autoplay; fullscreen; encrypted-media; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen
           />
         </div>

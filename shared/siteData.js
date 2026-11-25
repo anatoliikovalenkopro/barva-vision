@@ -15,6 +15,7 @@ export const BOOKING = { year: 2027, totalSpots: 5, spotsLeft: 5 };
 // Your films. id = the YouTube video id (the part after "v=" in the link).
 // cat should be one of: "Music Video", "Concert", "Event", "Wedding Film"
 export const FILMS = [
+  { id: "kkPPBsOc_AM", artist: "Francesco Rizzuto", song: "Live at New Moon Folk Club (Extended Cut)", cat: "Concert" },
   { id: "HMx5yuaW1Ds", artist: "Francesco Rizzuto", song: "On Borrowed Time (Recording Session)", cat: "Music Video" },
   { id: "8cBDGLc0bW0", artist: "Mallory Chipman", song: "Mythic Time", cat: "Music Video" },
   { id: "bYtKVmn1HDw", artist: "Mikayla Bortscher", song: "In the Dark", cat: "Music Video" },

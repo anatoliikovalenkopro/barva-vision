@@ -82,11 +82,11 @@ export function ServicePage({ path }) {
   return (
     <>
       <Hero {...p} />
-      {hasPhotos && p.photos.first && <PhotoGallery photos={PHOTOS[p.photos.key]} title={p.photos.title} em={p.photos.em} lead={p.photos.lead} />}
-      {p.kinds && <Services items={p.kinds} eyebrow={p.eyebrow} title={p.kindsTitle} em={p.kindsEm} />}
       {(FILMS.some((f) => f.cat === p.cat) || !hasPhotos) && (
         <Work cat={p.cat} tint="tint-sage" title="Recent" em="work" reelName={`${p.eyebrow.toLowerCase()} reel`} service={p.service} />
       )}
+      {hasPhotos && p.photos.first && <PhotoGallery photos={PHOTOS[p.photos.key]} title={p.photos.title} em={p.photos.em} lead={p.photos.lead} />}
+      {p.kinds && <Services items={p.kinds} eyebrow={p.eyebrow} title={p.kindsTitle} em={p.kindsEm} />}
       {hasPhotos && !p.photos.first && <PhotoGallery photos={PHOTOS[p.photos.key]} title={p.photos.title} em={p.photos.em} lead={p.photos.lead} showPrice={!p.morePhotos} />}
       {p.morePhotos && PHOTOS[p.morePhotos.key]?.length > 0 && (
         <PhotoGallery photos={PHOTOS[p.morePhotos.key]} id={p.morePhotos.key} title={p.morePhotos.title} em={p.morePhotos.em} lead={p.morePhotos.lead} />
